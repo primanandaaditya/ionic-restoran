@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Hubungi kami</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <p>Untuk hal-hal penting pada pesananmu silakan hubungi 777888999</p>
+
+  <br>
+  <p>Pertanyaanmu dan masukan sangat berarti bagi peningkatan pelayanan kami</p>
+
+
+  <form>
+
+    <ion-item>
+      <ion-label position="stacked">Nama</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Subyek</ion-label>
+      <ion-select placeholder="Pilih satu">
+        <ion-select-option value="0">Inquiry</ion-select-option>
+        <ion-select-option value="1">Suggestion</ion-select-option>
+        <ion-select-option value="2">Compliment</ion-select-option>
+        <ion-select-option value="3">Complain</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Jenis pesanan</ion-label>
+      <ion-select placeholder="Pilih satu">
+        <ion-select-option value="0">Online delivery</ion-select-option>
+        <ion-select-option value="1">Online take-away</ion-select-option>
+        <ion-select-option value="2">Phone Delivery</ion-select-option>
+        <ion-select-option value="3">Phone take-away</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked">Pesan</ion-label>
+      <ion-textarea>
+      </ion-textarea>
+    </ion-item>
+
+    <br>
+    <ion-button expand="full">Submit</ion-button>
+
+  </form>
+</ion-content>

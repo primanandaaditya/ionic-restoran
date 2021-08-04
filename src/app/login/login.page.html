@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <center><ion-title>LOGIN</ion-title></center>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <br>
+  <br>
+  <center>
+    <ion-img style="width: 120px; height: 120px" src="assets/icon/restaurant.png"></ion-img>
+  </center>
+
+
+
+  <br>
+  <br>
+
+  <br>
+  <br>
+
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <br>
+  <br>
+
+  <center>
+    <ion-button expand="full" (click)="doLogin()">Submit</ion-button>
+  </center>
+
+
+</ion-content>
