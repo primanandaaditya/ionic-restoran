@@ -26,67 +26,61 @@
     </ion-slides>
   </ion-card>
 
-
-
   <br>
   <br>
 
 
   <ion-toolbar>
-    <ion-buttons collapse="true">
-
+    <ion-buttons collapse="false">
       <ion-icon name="fast-food-outline" size="large" title="Delivery">
       </ion-icon>
       <ion-button>Delivery</ion-button>
-
       <ion-icon name="paper-plane-outline" size="large" title="Takeaway">
       </ion-icon>
       <ion-button>Takeaway</ion-button>
-
       <ion-icon name="reader-outline" size="large" title="Takeaway">
       </ion-icon>
       <ion-button>Menu</ion-button>
-
     </ion-buttons>
-
   </ion-toolbar>
-
-
   <br>
   <br>
 
-  <ion-card [class.ion-padding-top]="10" [class.ion-padding-bottom]="5">
-    <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 1500} }">
-      <ion-slide>
-        <div class="slide">
-          <ion-img style="width: 960px; height: 360px" src="assets/icon/satesenayan01.jpg"></ion-img>
+  <div style="align-content: center">
+    <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 2500} }">
+      <ion-slide *ngFor="let item of makanan">
+        <div (click)="itemKlik(item.id)" class="slide">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
+              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-img src="{{ pathGambar + item.gambar }}"></ion-img>
+            </ion-card-content>
+          </ion-card>
         </div>
       </ion-slide>
-      <ion-slide>
-        <ion-img style="width: 960px; height: 360px" src="assets/icon/satesenayan02.jpg"></ion-img>
-      </ion-slide>
-      <ion-slide>
-        <ion-img style="width: 960px; height: 360px" src="assets/icon/satesenayan03.jpg"></ion-img>
-      </ion-slide>
     </ion-slides>
-  </ion-card>
+  </div>
 
 
-  <ion-card [class.ion-padding-top]="10" [class.ion-padding-bottom]="5">
+  <div style="align-content: center">
     <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 1500} }">
-      <ion-slide>
-        <div class="slide">
-          <ion-img style="width: 960px; height: 360px" src="assets/icon/ayam01.jpg"></ion-img>
+      <ion-slide *ngFor="let item of minuman">
+        <div (click)="itemKlik(item.id)" class="slide">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
+              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-img style="width: 960px; height: 360px" src="{{ pathGambar + item.gambar }}"></ion-img>
+            </ion-card-content>
+          </ion-card>
         </div>
       </ion-slide>
-      <ion-slide>
-        <ion-img style="width: 960px; height: 360px" src="assets/icon/ayam02.jpg"></ion-img>
-      </ion-slide>
-      <ion-slide>
-        <ion-img style="width: 960px; height: 360px" src="assets/icon/ayam03.jpg"></ion-img>
-      </ion-slide>
     </ion-slides>
-  </ion-card>
-
+  </div>
 
 </ion-content>

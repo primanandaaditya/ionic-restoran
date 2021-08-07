@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
-import {environment} from "../../environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { LoadingService } from '../services/loading.service';
+import { ToastController } from '@ionic/angular';
+import {environment} from '../../environments/environment';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -9,16 +13,51 @@ import {environment} from "../../environments/environment";
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-  nama='';
-  constructor(private storage: Storage) {}
+  nama          ='';
+  pathGambar    = environment.gambarUrl;
+  makanan       : [];
+  minuman       : [];
+
+  constructor(
+      private storage: Storage,
+      private http: HttpClient,
+      private ls: LoadingService,
+      private toast: ToastController,
+      public navCtrl: NavController
+  ) {}
+
+  getMakanan(){
+    this.http.get(environment.baseUrl + 'produk/list_makanan.php').subscribe((res: any) => {
+      this.ls.present();
+      console.log(res.list);
+      this.makanan = res.list;
+      this.ls.dismiss();
+    });
+  }
+
+  getMinuman(){
+    this.http.get(environment.baseUrl + 'produk/list_minuman.php').subscribe((res: any) => {
+      this.ls.present();
+      console.log(res.list);
+      this.minuman = res.list;
+      this.ls.dismiss();
+    });
+  }
+
+  itemKlik(id){
+    console.log('ID: ' + id);
+    this.navCtrl.navigateForward('detail/{id}')
+  }
 
   async ionViewDidEnter() {
     this.nama = await this.storage.get('nama');
     console.log(this.nama);
+
   }
 
   async ngOnInit() {
-
+    this.getMakanan();
+    this.getMinuman();
   }
 
 }

@@ -4,8 +4,13 @@
 
 export const environment = {
   production: false,
+
   baseUrl2: 'http://www.baktimu.id/restoran/api/',
+  gambarUrl2:'http://www.baktimu.id/restoran/gambar/',
+
   baseUrl: 'http://localhost/restoran/api/',
+  gambarUrl:'http://localhost/restoran/gambar/',
+
   NAMA: 'nama',
   ID:'id',
   PASSWORD:'password',

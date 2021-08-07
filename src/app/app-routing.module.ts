@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'hubungikami',
     loadChildren: () => import('./hubungikami/hubungikami.module').then( m => m.HubungikamiPageModule)
+  },
+  {
+    path: 'detail/:id',
+    loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
   }
 ];
 @NgModule({
