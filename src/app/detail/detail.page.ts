@@ -19,8 +19,10 @@ export class DetailPage implements OnInit {
   imagePath   ;
   nama;
   harga;
+  qty;
   rupiah = environment.Rupiah;
   nama_wilayah;
+  add: any = {};
   constructor(private storage: Storage,
               private http: HttpClient,
               private ls: LoadingService,
@@ -45,6 +47,23 @@ export class DetailPage implements OnInit {
       this.nama = res.list.nama;
       this.harga =  res.list.harga;
       this.ls.dismiss();
+    });
+  }
+
+  async addKeranjang(){
+    this.add.id_user = await this.storage.get(environment.ID);
+    this.add.id_produk = this.idProduk;
+    this.add.harga = this.harga;
+    console.log('data ' + this.add.id_user);
+    console.log('data ' + this.add.id_produk);
+    console.log('data ' + this.add.harga);
+    console.log('data ' + this.add.qty);
+
+    this.ls.present();
+    this.http.post(environment.baseUrl + 'keranjang/add.php', this.add).subscribe((res: any) => {
+      console.log(res);
+      this.ls.dismiss();
+
     });
   }
 
