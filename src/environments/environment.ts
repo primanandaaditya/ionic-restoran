@@ -5,17 +5,21 @@
 export const environment = {
   production: false,
 
-  baseUrl2: 'http://www.baktimu.id/restoran/api/',
-  gambarUrl2:'http://www.baktimu.id/restoran/gambar/',
+  baseUrl2      :'http://www.baktimu.id/restoran/api/',
+  gambarUrl2    :'http://www.baktimu.id/restoran/gambar/',
 
-  baseUrl: 'http://localhost/restoran/api/',
-  gambarUrl:'http://localhost/restoran/gambar/',
+  baseUrl       :'http://localhost/restoran/api/',
+  gambarUrl     :'http://localhost/restoran/gambar/',
 
-  NAMA: 'nama',
-  ID:'id',
-  PASSWORD:'password',
-  ID_WILAYAH:'id_wilayah',
-  IS_LOGIN:'isLogin'
+  NAMA          :'nama',
+  ID            :'id',
+  PASSWORD      :'password',
+  ID_WILAYAH    :'id_wilayah',
+  IS_LOGIN      :'isLogin',
+  NAMA_WILAYAH  :'nama_wilayah',
+  HARGA         :'harga',
+
+  Rupiah        :'Rp. '
 };
 
 /*

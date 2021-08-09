@@ -39,11 +39,15 @@ export class LoginPage implements OnInit {
         await this.storage.set(environment.ID, res.hasil.id);
         await this.storage.set(environment.PASSWORD, res.hasil.pass);
         await this.storage.set(environment.ID_WILAYAH, res.hasil.id_wilayah);
+        await this.storage.set(environment.NAMA_WILAYAH, res.hasil.nama_wilayah);
+        await this.storage.set(environment.HARGA, res.hasil.harga);
         await this.storage.set(environment.IS_LOGIN, true);
 
         console.log(res.hasil.id);
         console.log(res.hasil.nama);
         console.log(res.hasil.password);
+        console.log(res.hasil.nama_wilayah);
+        console.log(res.hasil.harga);
         console.log('id wilayah ' + res.hasil.id_wilayah);
         console.log('isLogin : ' + await this.storage.get('isLogin'));
         this.navCtrl.navigateRoot('/');

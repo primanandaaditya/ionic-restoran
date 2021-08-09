@@ -6,6 +6,7 @@ import { LoadingService } from '../services/loading.service';
 import { ToastController } from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -23,7 +24,8 @@ export class Tab1Page implements OnInit{
       private http: HttpClient,
       private ls: LoadingService,
       private toast: ToastController,
-      public navCtrl: NavController
+      public navCtrl: NavController,
+      private router: Router
   ) {}
 
   getMakanan(){
@@ -44,9 +46,8 @@ export class Tab1Page implements OnInit{
     });
   }
 
-  itemKlik(id){
-    console.log('ID: ' + id);
-    this.navCtrl.navigateForward('detail/{id}')
+  gotoDetailPage(){
+    this.router.navigateByUrl('/detail');
   }
 
   async ionViewDidEnter() {

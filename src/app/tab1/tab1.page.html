@@ -30,26 +30,28 @@
   <br>
 
 
-  <ion-toolbar>
-    <ion-buttons collapse="false">
-      <ion-icon name="fast-food-outline" size="large" title="Delivery">
-      </ion-icon>
-      <ion-button>Delivery</ion-button>
-      <ion-icon name="paper-plane-outline" size="large" title="Takeaway">
-      </ion-icon>
-      <ion-button>Takeaway</ion-button>
-      <ion-icon name="reader-outline" size="large" title="Takeaway">
-      </ion-icon>
-      <ion-button>Menu</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full">Delivery</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full">Takeaway</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full">Menu</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
   <br>
   <br>
 
   <div style="align-content: center">
     <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 2500} }">
-      <ion-slide *ngFor="let item of makanan">
-        <div (click)="itemKlik(item.id)" class="slide">
+      <ion-slide *ngFor="let item of makanan" routerLink="/detail/{{ item.id }}">
+        <div>
           <ion-card>
             <ion-card-header>
               <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
@@ -67,8 +69,8 @@
 
   <div style="align-content: center">
     <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 1500} }">
-      <ion-slide *ngFor="let item of minuman">
-        <div (click)="itemKlik(item.id)" class="slide">
+      <ion-slide *ngFor="let item of minuman" routerLink="/detail/{{ item.id }}">
+        <div class="slide">
           <ion-card>
             <ion-card-header>
               <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>

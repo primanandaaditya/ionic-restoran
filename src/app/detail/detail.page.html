@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Detail Produk</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
+  <center>
+    <ion-img style="width: 300px; height: 300px" src="{{ imagePath }}"></ion-img>
+  </center>
+  <h1 style="text-align: center">{{ nama }}</h1>
+  <h3 style="text-align: center">Rp. {{ harga | number : fractionSize }}</h3>
+
+
+  <ion-item>
+    <ion-label>Tambahkan ke keranjang</ion-label>
+    <ion-input type="number" value="1"></ion-input>
+  </ion-item>
+
+
+
+  <p style="text-align: center">Dikirim ke : {{ nama_wilayah }}</p>
 
 </ion-content>
