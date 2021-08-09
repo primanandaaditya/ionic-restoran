@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "c89f2e75-fb46-4332-91c3-7f25d64b8f85",
+		"name": "restoran",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"putri@gmail.com\",\r\n    \"password\":\"abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8079/restoran/api/auth/login.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8079",
+					"path": [
+						"restoran",
+						"api",
+						"auth",
+						"login.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8079/restoran/api/auth/register.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8079",
+					"path": [
+						"restoran",
+						"api",
+						"auth",
+						"register.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_wilayah",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8079/restoran/api/wilayah/list_wilayah.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8079",
+					"path": [
+						"restoran",
+						"api",
+						"wilayah",
+						"list_wilayah.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_produk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8079/restoran/api/produk/list_makanan.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8079",
+					"path": [
+						"restoran",
+						"api",
+						"produk",
+						"list_makanan.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_minuman",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8079/restoran/api/produk/list_minuman.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8079",
+					"path": [
+						"restoran",
+						"api",
+						"produk",
+						"list_minuman.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
