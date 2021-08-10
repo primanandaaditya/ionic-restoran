@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2021 at 06:40 AM
+-- Generation Time: Aug 10, 2021 at 05:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -41,6 +41,32 @@ INSERT INTO `jenis_produk` (`id`, `nama`) VALUES
 (1, 'makanan'),
 (2, 'minuman'),
 (3, 'cemilan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keranjang`
+--
+
+CREATE TABLE `keranjang` (
+  `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`id_user`, `id_produk`, `harga`, `qty`) VALUES
+(4, 1, 15000, 1),
+(4, 1, 15000, 3),
+(4, 3, 4000, 1),
+(3, 1, 15000, 1),
+(1, 1, 5000, 1),
+(3, 1, 15000, 1),
+(3, 1, 15000, 4);
 
 -- --------------------------------------------------------
 

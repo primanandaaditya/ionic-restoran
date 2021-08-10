@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c89f2e75-fb46-4332-91c3-7f25d64b8f85",
+		"_postman_id": "ff7c797c-5e99-4c24-be20-2c024f013fab",
 		"name": "restoran",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,12 +20,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8079/restoran/api/auth/login.php",
+					"raw": "http://localhost/restoran/api/auth/login.php",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8079",
 					"path": [
 						"restoran",
 						"api",
@@ -95,12 +94,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8079/restoran/api/produk/list_makanan.php",
+					"raw": "http://localhost/restoran/api/produk/list_makanan.php",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8079",
 					"path": [
 						"restoran",
 						"api",
@@ -128,6 +126,140 @@
 						"api",
 						"produk",
 						"list_minuman.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detai produk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add keranjang",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_user\":1,\n    \"id_produk\":1,\n    \"harga\":5000,\n    \"qty\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/keranjang/add.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"keranjang",
+						"add.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete keranjang",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_user\":1,\n    \"id_produk\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/keranjang/delete.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"keranjang",
+						"delete.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kosong keranjang",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_user\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/keranjang/kosong.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"keranjang",
+						"kosong.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get keranjang",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_user\":4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/keranjang/get.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"keranjang",
+						"get.php"
 					]
 				}
 			},
