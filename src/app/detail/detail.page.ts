@@ -36,6 +36,7 @@ export class DetailPage implements OnInit {
     console.log('id produk: ' + this.idProduk);
     this.getProdukDetail();
     this.nama_wilayah = await this.storage.get(environment.NAMA_WILAYAH);
+    this.add.qty=1;
   }
 
   getProdukDetail(){
@@ -63,8 +64,22 @@ export class DetailPage implements OnInit {
     this.http.post(environment.baseUrl + 'keranjang/add.php', this.add).subscribe((res: any) => {
       console.log(res);
       this.ls.dismiss();
-
+      this.showToast(res.message);
     });
+  }
+
+  async showToast(str){
+    await this.toast.create({
+      message: str,
+      duration: 2000,
+      position: 'bottom',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          console.log('OK Clicked');
+        }
+      }]
+    }).then(x => x.present());
   }
 
 }

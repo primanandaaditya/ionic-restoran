@@ -56,9 +56,14 @@ export class Tab1Page implements OnInit{
 
   }
 
-  async ngOnInit() {
+  ionViewWillEnter() {
     this.getMakanan();
     this.getMinuman();
+  }
+
+
+  async ngOnInit() {
+
   }
 
 }

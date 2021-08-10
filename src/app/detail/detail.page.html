@@ -4,15 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content [class.ion-padding]="20">
 
   <center>
     <ion-img style="width: 300px; height: 300px" src="{{ imagePath }}"></ion-img>
   </center>
   <h1 style="text-align: center">{{ nama }}</h1>
-  <h3 style="text-align: center">Rp. {{ harga | number : fractionSize }}</h3>
+  <h3 style="text-align: center">Rp. {{ harga }}</h3>
   <p style="text-align: center">Dikirim ke : {{ nama_wilayah }}</p>
   <ion-grid>
 
