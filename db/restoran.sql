@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2021 at 12:31 PM
+-- Generation Time: Aug 11, 2021 at 05:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -144,7 +144,10 @@ INSERT INTO `produk` (`id`, `nama`, `jenis`, `harga`, `gambar`, `keterangan`) VA
 (3, 'Es Teh', 2, 4000, 'esteh.jpg', 'Minuman khas Indonesia, segar dan manis.'),
 (4, 'Es Jeruk', 2, 6000, 'esjeruk.jpg', 'Minuman segar dengan rasa jeruk pilihan.'),
 (5, 'Soda Gembira', 2, 15000, 'sodagembira.jpg', 'Susu sprite dengan soda gembia'),
-(6, 'Es semangka', 2, 5000, 'essemangka.jpg', 'Hanya buah semangka');
+(6, 'Es semangka', 2, 5000, 'essemangka.jpg', 'Hanya buah semangka'),
+(9, 'Mie Goreng', 2, 15000, '', 'Mie goreng lezat'),
+(15, 'aaa', 1, 1111, 'noimage.png', '111'),
+(16, 'Rica Ayam', 1, 30000, 'Rica Ayam.jpeg', 'rica ayam');
 
 -- --------------------------------------------------------
 
@@ -281,7 +284,7 @@ ALTER TABLE `pesanan_master`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
