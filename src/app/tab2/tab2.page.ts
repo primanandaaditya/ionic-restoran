@@ -52,6 +52,18 @@ export class Tab2Page implements OnInit{
     });
   }
 
+  async kosongKeranjang(){
+    this.id_user = await this.storage.get(environment.ID);
+    this.hapus.id_user = this.id_user;
+
+    this.ls.present();
+    this.http.post(environment.baseUrl + 'keranjang/kosong.php', this.hapus).subscribe((res: any) => {
+      console.log(res);
+      this.ls.dismiss();
+      this.showToast(res.message);
+      this.getKeranjang();
+    });
+  }
 
   async getKeranjang(){
     this.id_user = await this.storage.get(environment.ID);

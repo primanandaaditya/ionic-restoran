@@ -125,12 +125,40 @@ let Tab2Page = class Tab2Page {
         this.navCtrl = navCtrl;
         this.router = router;
         this.user = {};
+        this.hapus = {};
     }
     ngOnInit() {
         this.pathGambar = _environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.gambarUrl;
     }
     ionViewWillEnter() {
         this.getKeranjang();
+    }
+    hapusItem(id_produk) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            this.id_user = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+            this.hapus.id_user = this.id_user;
+            this.hapus.id_produk = id_produk;
+            this.ls.present();
+            this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/delete.php', this.hapus).subscribe((res) => {
+                console.log(res);
+                this.ls.dismiss();
+                this.showToast(res.message);
+                this.getKeranjang();
+            });
+        });
+    }
+    kosongKeranjang() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            this.id_user = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+            this.hapus.id_user = this.id_user;
+            this.ls.present();
+            this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/kosong.php', this.hapus).subscribe((res) => {
+                console.log(res);
+                this.ls.dismiss();
+                this.showToast(res.message);
+                this.getKeranjang();
+            });
+        });
     }
     getKeranjang() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
@@ -208,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <ion-list>\n    <ion-list-header>\n      Keranjang Anda :\n    </ion-list-header>\n\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-avatar slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-avatar>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <p>Total tagihan: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ total | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <p>Biaya kirim: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ biaya | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <p>Grand total: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ grandTotal | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <div *ngIf=\"total ==0\">\n    <center><h3>Keranjang Anda masih kosong</h3></center>\n\n\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-thumbnail slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n      <ion-avatar slot=\"end\">\n        <ion-icon (click)=\"hapusItem(item.id_produk)\" name=\"trash-outline\"></ion-icon>\n      </ion-avatar>\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf=\"total > 0\">\n    <ion-item>\n      <ion-label slot=\"start\">\n        Total:\n      </ion-label>\n      <ion-label  style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ total | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Ongkos kirim:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ biaya | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Grand total:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ grandTotal | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-button (click)=\"kosongKeranjang()\" expand=\"full\">Hapus keranjang</ion-button>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-button expand=\"full\">Beli</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n");
 
 /***/ })
 

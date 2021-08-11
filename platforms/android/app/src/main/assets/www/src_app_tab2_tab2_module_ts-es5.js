@@ -242,6 +242,7 @@
           this.navCtrl = navCtrl;
           this.router = router;
           this.user = {};
+          this.hapus = {};
         }
 
         _createClass(Tab2Page, [{
@@ -255,8 +256,8 @@
             this.getKeranjang();
           }
         }, {
-          key: "getKeranjang",
-          value: function getKeranjang() {
+          key: "hapusItem",
+          value: function hapusItem(id_produk) {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this = this;
 
@@ -269,45 +270,20 @@
 
                     case 2:
                       this.id_user = _context.sent;
-                      _context.next = 5;
-                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.HARGA);
-
-                    case 5:
-                      this.biaya = _context.sent;
-                      _context.next = 8;
-                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NAMA_WILAYAH);
-
-                    case 8:
-                      this.wilayah = _context.sent;
-                      this.user.id_user = this.id_user;
+                      this.hapus.id_user = this.id_user;
+                      this.hapus.id_produk = id_produk;
                       this.ls.present();
-                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/get.php', this.user).subscribe(function (res) {
+                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/delete.php', this.hapus).subscribe(function (res) {
                         console.log(res);
 
                         _this.ls.dismiss();
 
-                        _this.keranjang = res.message;
-                        _this.total = 0;
+                        _this.showToast(res.message);
 
-                        var _iterator = _createForOfIteratorHelper(_this.keranjang),
-                            _step;
-
-                        try {
-                          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                            var item = _step.value;
-                            _this.total = _this.total + parseInt(item['total']);
-                          }
-                        } catch (err) {
-                          _iterator.e(err);
-                        } finally {
-                          _iterator.f();
-                        }
-
-                        console.log('Total keranjang : ' + _this.total);
-                        _this.grandTotal = parseInt(_this.biaya) + parseInt(_this.total);
+                        _this.getKeranjang();
                       });
 
-                    case 12:
+                    case 7:
                     case "end":
                       return _context.stop();
                   }
@@ -316,14 +292,110 @@
             }));
           }
         }, {
-          key: "showToast",
-          value: function showToast(str) {
+          key: "kosongKeranjang",
+          value: function kosongKeranjang() {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this2 = this;
+
               return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
                       _context2.next = 2;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+
+                    case 2:
+                      this.id_user = _context2.sent;
+                      this.hapus.id_user = this.id_user;
+                      this.ls.present();
+                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/kosong.php', this.hapus).subscribe(function (res) {
+                        console.log(res);
+
+                        _this2.ls.dismiss();
+
+                        _this2.showToast(res.message);
+
+                        _this2.getKeranjang();
+                      });
+
+                    case 6:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "getKeranjang",
+          value: function getKeranjang() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var _this3 = this;
+
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+
+                    case 2:
+                      this.id_user = _context3.sent;
+                      _context3.next = 5;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.HARGA);
+
+                    case 5:
+                      this.biaya = _context3.sent;
+                      _context3.next = 8;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NAMA_WILAYAH);
+
+                    case 8:
+                      this.wilayah = _context3.sent;
+                      this.user.id_user = this.id_user;
+                      this.ls.present();
+                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/get.php', this.user).subscribe(function (res) {
+                        console.log(res);
+
+                        _this3.ls.dismiss();
+
+                        _this3.keranjang = res.message;
+                        _this3.total = 0;
+
+                        var _iterator = _createForOfIteratorHelper(_this3.keranjang),
+                            _step;
+
+                        try {
+                          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                            var item = _step.value;
+                            _this3.total = _this3.total + parseInt(item['total']);
+                          }
+                        } catch (err) {
+                          _iterator.e(err);
+                        } finally {
+                          _iterator.f();
+                        }
+
+                        console.log('Total keranjang : ' + _this3.total);
+                        _this3.grandTotal = parseInt(_this3.biaya) + parseInt(_this3.total);
+                      });
+
+                    case 12:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+          }
+        }, {
+          key: "showToast",
+          value: function showToast(str) {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      _context4.next = 2;
                       return this.toast.create({
                         message: str,
                         duration: 2000,
@@ -340,10 +412,10 @@
 
                     case 2:
                     case "end":
-                      return _context2.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee4, this);
             }));
           }
         }]);
@@ -395,7 +467,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <ion-list>\n    <ion-list-header>\n      Keranjang Anda :\n    </ion-list-header>\n\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-avatar slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-avatar>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <p>Total tagihan: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ total | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <p>Biaya kirim: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ biaya | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <p>Grand total: </p>\n      </ion-col>\n      <ion-col>\n        <p style=\"text-align: end\">Rp. {{ grandTotal | number : fractionSize }}</p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <div *ngIf=\"total ==0\">\n    <center><h3>Keranjang Anda masih kosong</h3></center>\n\n\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-thumbnail slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n      <ion-avatar slot=\"end\">\n        <ion-icon (click)=\"hapusItem(item.id_produk)\" name=\"trash-outline\"></ion-icon>\n      </ion-avatar>\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf=\"total > 0\">\n    <ion-item>\n      <ion-label slot=\"start\">\n        Total:\n      </ion-label>\n      <ion-label  style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ total | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Ongkos kirim:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ biaya | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Grand total:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ grandTotal | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-button (click)=\"kosongKeranjang()\" expand=\"full\">Hapus keranjang</ion-button>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-button expand=\"full\">Beli</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n";
       /***/
     }
   }]);

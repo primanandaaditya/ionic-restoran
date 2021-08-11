@@ -296,6 +296,12 @@
             }));
           }
         }, {
+          key: "ionViewWillEnter",
+          value: function ionViewWillEnter() {
+            this.getMakanan();
+            this.getMinuman();
+          }
+        }, {
           key: "ngOnInit",
           value: function ngOnInit() {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
@@ -303,15 +309,11 @@
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
-                      this.getMakanan();
-                      this.getMinuman();
-
-                    case 2:
                     case "end":
                       return _context2.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee2);
             }));
           }
         }]);
@@ -363,7 +365,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 1</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-card [class.ion-padding-top]=\"10\" [class.ion-padding-bottom]=\"5\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 1500} }\">\n      <ion-slide>\n        <div class=\"slide\">\n          <p>Selamat datang di aplikasi restoran {{ this.nama }}</p>\n        </div>\n      </ion-slide>\n      <ion-slide>\n        <p>Mohon pilih delivery atau takeaway untuk melihat menu</p>\n      </ion-slide>\n    </ion-slides>\n  </ion-card>\n\n  <br>\n  <br>\n\n\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-button expand=\"full\">Delivery</ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button expand=\"full\">Takeaway</ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button expand=\"full\">Menu</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n  <br>\n  <br>\n\n  <div style=\"align-content: center\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 2500} }\">\n      <ion-slide *ngFor=\"let item of makanan\" routerLink=\"/detail/{{ item.id }}\">\n        <div>\n          <ion-card>\n            <ion-card-header>\n              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>\n              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content>\n              <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n            </ion-card-content>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n\n\n  <div style=\"align-content: center\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 1500} }\">\n      <ion-slide *ngFor=\"let item of minuman\" routerLink=\"/detail/{{ item.id }}\">\n        <div class=\"slide\">\n          <ion-card>\n            <ion-card-header>\n              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>\n              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content>\n              <ion-img style=\"width: 960px; height: 360px\" src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n            </ion-card-content>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 1</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-card [class.ion-padding-top]=\"10\" [class.ion-padding-bottom]=\"5\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 1500} }\">\n      <ion-slide>\n        <div class=\"slide\">\n          <small>Selamat datang di aplikasi restoran {{ this.nama }}</small>\n        </div>\n      </ion-slide>\n      <ion-slide>\n        <small>Mohon pilih delivery atau takeaway untuk melihat menu</small>\n      </ion-slide>\n    </ion-slides>\n  </ion-card>\n\n  <br>\n  <br>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-button expand=\"full\">Delivery</ion-button>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-button expand=\"full\">Reservasi</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n  <br>\n  <br>\n\n  <div style=\"align-content: center\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 2500} }\">\n      <ion-slide *ngFor=\"let item of makanan\" routerLink=\"/detail/{{ item.id }}\">\n        <div>\n          <ion-card>\n            <ion-card-header>\n              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>\n              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content>\n              <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n            </ion-card-content>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n\n\n  <div style=\"align-content: center\">\n    <ion-slides pager=\"true\" [options]=\"{ slidesPerView:1, autoplay: {delay: 1500} }\">\n      <ion-slide *ngFor=\"let item of minuman\" routerLink=\"/detail/{{ item.id }}\">\n        <div class=\"slide\">\n          <ion-card>\n            <ion-card-header>\n              <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>\n              <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>\n            </ion-card-header>\n            <ion-card-content>\n              <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n            </ion-card-content>\n          </ion-card>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor=\"let item of minuman\" col-12 no-padding>\n        <ion-card>\n          <ion-card-header>\n            {{ item.nama }}\n          </ion-card-header>\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n";
       /***/
     }
   }]);
