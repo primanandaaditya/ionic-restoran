@@ -27,12 +27,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/keranjang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/pesanan" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/pesanan" />
       <recent name="$PROJECT_DIR$/api/keranjang" />
       <recent name="$PROJECT_DIR$/api/produk" />
     </key>
@@ -51,7 +52,8 @@
       <workItem from="1628480755927" duration="1370000" />
       <workItem from="1628483975833" duration="259000" />
       <workItem from="1628491559131" duration="1315000" />
-      <workItem from="1628563486217" duration="1578000" />
+      <workItem from="1628563486217" duration="1811000" />
+      <workItem from="1628673686039" duration="2667000" />
     </task>
     <servers />
   </component>

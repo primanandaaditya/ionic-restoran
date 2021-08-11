@@ -20,10 +20,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/restoran/api/auth/login.php",
+					"raw": "http://baktimu.id/restoran/api/auth/login.php",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"baktimu",
+						"id"
 					],
 					"path": [
 						"restoran",
@@ -234,11 +235,8 @@
 		},
 		{
 			"name": "get keranjang",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -260,6 +258,36 @@
 						"api",
 						"keranjang",
 						"get.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add pesanan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jenis_pesanan\":1,\n    \"nomor\":\"0003\",\n    \"ongkir\":10000,\n    \"total\":20000,\n    \"id_user\":3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/pesanan/add.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"pesanan",
+						"add.php"
 					]
 				}
 			},

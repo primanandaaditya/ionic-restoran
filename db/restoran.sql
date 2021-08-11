@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 10, 2021 at 05:14 AM
+-- Generation Time: Aug 11, 2021 at 12:31 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `restoran`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_order`
+--
+
+CREATE TABLE `jenis_order` (
+  `id` int(11) NOT NULL,
+  `kode` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jenis_order`
+--
+
+INSERT INTO `jenis_order` (`id`, `kode`, `nama`) VALUES
+(1, 1, 'delivery'),
+(2, 2, 'reservasi');
 
 -- --------------------------------------------------------
 
@@ -55,18 +75,49 @@ CREATE TABLE `keranjang` (
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `keranjang`
+-- Table structure for table `pesanan_detail`
 --
 
-INSERT INTO `keranjang` (`id_user`, `id_produk`, `harga`, `qty`) VALUES
-(4, 1, 15000, 1),
-(4, 1, 15000, 3),
-(4, 3, 4000, 1),
-(3, 1, 15000, 1),
-(1, 1, 5000, 1),
-(3, 1, 15000, 1),
-(3, 1, 15000, 4);
+CREATE TABLE `pesanan_detail` (
+  `id` int(11) NOT NULL,
+  `nomor` varchar(100) DEFAULT NULL,
+  `id_produk` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanan_detail`
+--
+
+INSERT INTO `pesanan_detail` (`id`, `nomor`, `id_produk`, `qty`, `harga`) VALUES
+(13, '0003', 2, 3, 20000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesanan_master`
+--
+
+CREATE TABLE `pesanan_master` (
+  `id` int(11) NOT NULL,
+  `jenis_pesanan` int(11) NOT NULL,
+  `nomor` varchar(100) DEFAULT NULL,
+  `tanggal` date NOT NULL DEFAULT current_timestamp(),
+  `ongkir` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanan_master`
+--
+
+INSERT INTO `pesanan_master` (`id`, `jenis_pesanan`, `nomor`, `tanggal`, `ongkir`, `total`, `id_user`) VALUES
+(5, 1, '0003', '2021-08-11', 10000, 20000, 3);
 
 -- --------------------------------------------------------
 
@@ -91,7 +142,9 @@ INSERT INTO `produk` (`id`, `nama`, `jenis`, `harga`, `gambar`, `keterangan`) VA
 (1, 'Nasi Goreng Ayam', 1, 15000, 'nasgorayam.jpg', 'Nasi goreng dengan campuran telor dan ayam. Nikmat disantap sore dan malam hari.'),
 (2, 'Nasi Goreng Kambing', 1, 20000, 'nasgorkambing.jpg', 'Nasi goreng dengan campuran telor dan kambing.Nikmat disantap sore dan malam hari.'),
 (3, 'Es Teh', 2, 4000, 'esteh.jpg', 'Minuman khas Indonesia, segar dan manis.'),
-(4, 'Es Jeruk', 2, 6000, 'esjeruk.jpg', 'Minuman segar dengan rasa jeruk pilihan.');
+(4, 'Es Jeruk', 2, 6000, 'esjeruk.jpg', 'Minuman segar dengan rasa jeruk pilihan.'),
+(5, 'Soda Gembira', 2, 15000, 'sodagembira.jpg', 'Susu sprite dengan soda gembia'),
+(6, 'Es semangka', 2, 5000, 'essemangka.jpg', 'Hanya buah semangka');
 
 -- --------------------------------------------------------
 
@@ -155,9 +208,27 @@ INSERT INTO `wilayah` (`id`, `nama`, `jarak`, `harga`) VALUES
 --
 
 --
+-- Indexes for table `jenis_order`
+--
+ALTER TABLE `jenis_order`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pesanan_detail`
+--
+ALTER TABLE `pesanan_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pesanan_master`
+--
+ALTER TABLE `pesanan_master`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -183,16 +254,34 @@ ALTER TABLE `wilayah`
 --
 
 --
+-- AUTO_INCREMENT for table `jenis_order`
+--
+ALTER TABLE `jenis_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `pesanan_detail`
+--
+ALTER TABLE `pesanan_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `pesanan_master`
+--
+ALTER TABLE `pesanan_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
