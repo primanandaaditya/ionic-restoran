@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'konf-deliveri',
     loadChildren: () => import('./konf-deliveri/konf-deliveri.module').then( m => m.KonfDeliveriPageModule)
+  },
+  {
+    path: 'pilih-menu',
+    loadChildren: () => import('./pilih-menu/pilih-menu.module').then( m => m.PilihMenuPageModule)
   }
 ];
 @NgModule({

@@ -9,27 +9,28 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-pilih-menu',
+  templateUrl: './pilih-menu.page.html',
+  styleUrls: ['./pilih-menu.page.scss'],
 })
-export class Tab1Page implements OnInit{
+export class PilihMenuPage implements OnInit {
+
   nama          ='';
   pathGambar    = environment.gambarUrl;
   makanan       : [];
   minuman       : [];
+  constructor(private storage: Storage,
+              private http: HttpClient,
+              private ls: LoadingService,
+              private toast: ToastController,
+              public navCtrl: NavController,
+              private router: Router) { }
 
-  constructor(
-      private storage: Storage,
-      private http: HttpClient,
-      private ls: LoadingService,
-      private toast: ToastController,
-      public navCtrl: NavController,
-      private router: Router
-  ) {}
+  ngOnInit() {
+  }
 
   getMakanan(){
-    this.http.get(environment.baseUrl + 'produk/slide_makanan.php').subscribe((res: any) => {
+    this.http.get(environment.baseUrl + 'produk/list_makanan.php').subscribe((res: any) => {
       this.ls.present();
       console.log(res.list);
       this.makanan = res.list;
@@ -38,7 +39,7 @@ export class Tab1Page implements OnInit{
   }
 
   getMinuman(){
-    this.http.get(environment.baseUrl + 'produk/slide_minuman.php').subscribe((res: any) => {
+    this.http.get(environment.baseUrl + 'produk/list_minuman.php').subscribe((res: any) => {
       this.ls.present();
       console.log(res.list);
       this.minuman = res.list;
@@ -60,10 +61,4 @@ export class Tab1Page implements OnInit{
     this.getMakanan();
     this.getMinuman();
   }
-
-
-  async ngOnInit() {
-
-  }
-
 }

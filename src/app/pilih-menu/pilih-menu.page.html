@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Pilih Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <center><h2>Menu makanan</h2></center>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of makanan;" size="6">
+        <ion-card routerLink="/detail/{{ item.id }}">
+          <ion-card-header>
+            <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
+            <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="{{ pathGambar + item.gambar }}"></ion-img>
+            <small>{{ item.keterangan }}</small>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <br>
+  <center><h2>Menu minuman</h2></center>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of minuman;" size="6">
+        <ion-card routerLink="/detail/{{ item.id }}">
+          <ion-card-header>
+            <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
+            <ion-card-title>Rp. {{ item.harga | number : fractionSize }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="{{ pathGambar + item.gambar }}"></ion-img>
+            <small>{{ item.keterangan }}</small>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
