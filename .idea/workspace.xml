@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03e81787-7882-40ed-9738-56e0cf029cb7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/nav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,18 +27,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/produk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/pesanan" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/pesanan" />
+      <recent name="$PROJECT_DIR$/api/keranjang_reservasi" />
       <recent name="$PROJECT_DIR$/api/produk" />
       <recent name="$PROJECT_DIR$/gambar" />
       <recent name="$PROJECT_DIR$/view" />
-      <recent name="$PROJECT_DIR$/api/pesanan" />
-      <recent name="$PROJECT_DIR$/api/keranjang" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -59,7 +58,8 @@
       <workItem from="1628563486217" duration="1811000" />
       <workItem from="1628673686039" duration="2973000" />
       <workItem from="1628683271461" duration="9860000" />
-      <workItem from="1628755563851" duration="700000" />
+      <workItem from="1628755563851" duration="741000" />
+      <workItem from="1628763053551" duration="1744000" />
     </task>
     <servers />
   </component>

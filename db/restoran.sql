@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 11, 2021 at 05:36 PM
+-- Generation Time: Aug 12, 2021 at 12:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -78,6 +78,19 @@ CREATE TABLE `keranjang` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `keranjang_reservasi`
+--
+
+CREATE TABLE `keranjang_reservasi` (
+  `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pesanan_detail`
 --
 
@@ -94,7 +107,11 @@ CREATE TABLE `pesanan_detail` (
 --
 
 INSERT INTO `pesanan_detail` (`id`, `nomor`, `id_produk`, `qty`, `harga`) VALUES
-(13, '0003', 2, 3, 20000);
+(26, '202174-5', 9, 2, 15000),
+(27, '202174-5', 15, 3, 1111),
+(28, '202174-5', 1, 3, 15000),
+(29, '202174-5', 5, 2, 15000),
+(30, '202174-5', 16, 1, 30000);
 
 -- --------------------------------------------------------
 
@@ -104,20 +121,24 @@ INSERT INTO `pesanan_detail` (`id`, `nomor`, `id_produk`, `qty`, `harga`) VALUES
 
 CREATE TABLE `pesanan_master` (
   `id` int(11) NOT NULL,
-  `jenis_pesanan` int(11) NOT NULL,
+  `jenis_pesanan` int(11) DEFAULT NULL,
   `nomor` varchar(100) DEFAULT NULL,
   `tanggal` date NOT NULL DEFAULT current_timestamp(),
-  `ongkir` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `ongkir` int(11) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `meja` varchar(10) DEFAULT NULL,
+  `tgl_reservasi` date DEFAULT NULL,
+  `cara_bayar` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pesanan_master`
 --
 
-INSERT INTO `pesanan_master` (`id`, `jenis_pesanan`, `nomor`, `tanggal`, `ongkir`, `total`, `id_user`) VALUES
-(5, 1, '0003', '2021-08-11', 10000, 20000, 3);
+INSERT INTO `pesanan_master` (`id`, `jenis_pesanan`, `nomor`, `tanggal`, `ongkir`, `total`, `id_user`, `meja`, `tgl_reservasi`, `cara_bayar`) VALUES
+(10, 1, '202174-5', '2021-08-12', 5000, 38333, 5, NULL, NULL, NULL),
+(11, 1, '202174-5', '2021-08-12', 5000, 110000, 5, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -272,13 +293,13 @@ ALTER TABLE `jenis_produk`
 -- AUTO_INCREMENT for table `pesanan_detail`
 --
 ALTER TABLE `pesanan_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `pesanan_master`
 --
 ALTER TABLE `pesanan_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `produk`
