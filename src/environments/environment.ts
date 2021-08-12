@@ -18,6 +18,7 @@ export const environment = {
   IS_LOGIN      :'isLogin',
   NAMA_WILAYAH  :'nama_wilayah',
   HARGA         :'harga',
+  GRAND_TOTAL   :'grandtotal',
 
   Rupiah        :'Rp. '
 };

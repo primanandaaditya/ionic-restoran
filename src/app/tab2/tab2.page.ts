@@ -36,6 +36,7 @@ export class Tab2Page implements OnInit{
 
   ionViewWillEnter() {
     this.getKeranjang();
+    console.log(new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString());
   }
 
   async hapusItem(id_produk){
@@ -83,6 +84,7 @@ export class Tab2Page implements OnInit{
       }
       console.log('Total keranjang : ' + this.total);
       this.grandTotal = parseInt(this.biaya) + parseInt(this.total);
+      this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
     });
   }
 

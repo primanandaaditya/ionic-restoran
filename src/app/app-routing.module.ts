@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'konf-deliveri',
+    loadChildren: () => import('./konf-deliveri/konf-deliveri.module').then( m => m.KonfDeliveriPageModule)
   }
 ];
 @NgModule({

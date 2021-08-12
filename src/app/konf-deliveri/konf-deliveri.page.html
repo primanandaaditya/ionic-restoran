@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Konfirmasi Delivery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <p>Pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>
+
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo-bca.jpg"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo_cimb.jpeg"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo_mandiri.png"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <br>
+  <ion-button (click)="doBayar()" expand="full">Proses</ion-button>
+</ion-content>
