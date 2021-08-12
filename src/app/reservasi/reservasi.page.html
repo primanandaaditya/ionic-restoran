@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Reservasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <h3 style="text-align: center">Pilih meja</h3>
+
+  <ion-item>
+    <ion-label>Tgl reservasi</ion-label>
+    <ion-datetime displayFormat="YYYY MMMM DD" [(ngModel)]="tglReservasi"></ion-datetime>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card [color]="warna1" (click)="aktifkanMeja(1)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>1</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card [color]="warna2" (click)="aktifkanMeja(2)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>2</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card [color]="warna3" (click)="aktifkanMeja(3)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>3</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card [color]="warna4" (click)="aktifkanMeja(4)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>4</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card [color]="warna5" (click)="aktifkanMeja(5)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>5</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card [color]="warna6" (click)="aktifkanMeja(6)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>6</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card [color]="warna7" (click)="aktifkanMeja(7)">
+          <ion-card-header>
+            <center>
+              <ion-card-subtitle>MEJA</ion-card-subtitle>
+            </center>
+          </ion-card-header>
+          <ion-card-content>
+            <center><h1>7</h1></center>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-button routerLink="/menu-reservasi" (click)="simpanNomorMeja()" expand="full">Pilih menu</ion-button>
+</ion-content>

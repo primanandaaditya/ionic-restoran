@@ -20,6 +20,9 @@ export const environment = {
   HARGA         :'harga',
   GRAND_TOTAL   :'grandtotal',
 
+  NOMOR_MEJA    :'nomor_meja',
+  TGL_RESERVASI :'tgl_reservasi',
+
   Rupiah        :'Rp. '
 };
 

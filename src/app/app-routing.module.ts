@@ -37,6 +37,22 @@ const routes: Routes = [
   {
     path: 'pilih-menu',
     loadChildren: () => import('./pilih-menu/pilih-menu.module').then( m => m.PilihMenuPageModule)
+  },
+  {
+    path: 'reservasi',
+    loadChildren: () => import('./reservasi/reservasi.module').then( m => m.ReservasiPageModule)
+  },
+  {
+    path: 'menu-reservasi',
+    loadChildren: () => import('./menu-reservasi/menu-reservasi.module').then( m => m.MenuReservasiPageModule)
+  },
+  {
+    path: 'order-reservasi/:id',
+    loadChildren: () => import('./order-reservasi/order-reservasi.module').then( m => m.OrderReservasiPageModule)
+  },
+  {
+    path: 'keranjang-reservasi',
+    loadChildren: () => import('./keranjang-reservasi/keranjang-reservasi.module').then( m => m.KeranjangReservasiPageModule)
   }
 ];
 @NgModule({
