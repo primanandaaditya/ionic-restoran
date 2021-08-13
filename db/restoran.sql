@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 12, 2021 at 12:49 PM
+-- Generation Time: Aug 13, 2021 at 07:08 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -107,11 +107,7 @@ CREATE TABLE `pesanan_detail` (
 --
 
 INSERT INTO `pesanan_detail` (`id`, `nomor`, `id_produk`, `qty`, `harga`) VALUES
-(26, '202174-5', 9, 2, 15000),
-(27, '202174-5', 15, 3, 1111),
-(28, '202174-5', 1, 3, 15000),
-(29, '202174-5', 5, 2, 15000),
-(30, '202174-5', 16, 1, 30000);
+(31, '0006', 1, 3, 15000);
 
 -- --------------------------------------------------------
 
@@ -129,7 +125,7 @@ CREATE TABLE `pesanan_master` (
   `id_user` int(11) DEFAULT NULL,
   `meja` varchar(10) DEFAULT NULL,
   `tgl_reservasi` date DEFAULT NULL,
-  `cara_bayar` int(11) DEFAULT NULL
+  `cara_bayar` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -137,8 +133,7 @@ CREATE TABLE `pesanan_master` (
 --
 
 INSERT INTO `pesanan_master` (`id`, `jenis_pesanan`, `nomor`, `tanggal`, `ongkir`, `total`, `id_user`, `meja`, `tgl_reservasi`, `cara_bayar`) VALUES
-(10, 1, '202174-5', '2021-08-12', 5000, 38333, 5, NULL, NULL, NULL),
-(11, 1, '202174-5', '2021-08-12', 5000, 110000, 5, NULL, NULL, NULL);
+(13, 2, '0006', '2021-08-12', NULL, 20000, 3, '', '2001-01-01', '0');
 
 -- --------------------------------------------------------
 
@@ -218,14 +213,12 @@ CREATE TABLE `wilayah` (
 --
 
 INSERT INTO `wilayah` (`id`, `nama`, `jarak`, `harga`) VALUES
-(1, 'Cengkareng', 1, 5000),
-(2, 'Grogol Petamburan', 2, 10000),
-(3, 'Kalideres', 1, 5000),
-(4, 'Kebon Jerok', 1, 5000),
-(5, 'Kembangan', 3, 15000),
-(6, 'Palmerah', 4, 20000),
-(7, 'Taman Sari', 4, 20000),
-(8, 'Tambora', 5, 25000);
+(1, 'Pontianak Kota', 1, 5000),
+(2, 'Pontianak Barat', 2, 10000),
+(3, 'Pontianak Selatan', 1, 5000),
+(4, 'Pontianak Tenggara', 1, 5000),
+(5, 'Pontianak Timur', 3, 15000),
+(6, 'Pontianak Utara', 4, 20000);
 
 --
 -- Indexes for dumped tables
@@ -293,13 +286,13 @@ ALTER TABLE `jenis_produk`
 -- AUTO_INCREMENT for table `pesanan_detail`
 --
 ALTER TABLE `pesanan_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `pesanan_master`
 --
 ALTER TABLE `pesanan_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `produk`

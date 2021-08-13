@@ -8,30 +8,28 @@ require_once ('../../koneksi.php');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['jenis_pesanan']) && isset($data['nomor']) && isset($data['ongkir']) && isset($data['total']) && isset($data['id_user']) && isset($data['meja']) && isset($data['tgl_reservasi']) && isset($data['cara_bayar']) ){
+if (isset($data['jenis_pesanan']) && isset($data['nomor'])  && isset($data['total']) && isset($data['id_user']) && isset($data['meja']) && isset($data['tgl_reservasi']) && isset($data['cara_bayar']) ){
 
     $jenis_pesanan      = $data['jenis_pesanan'];
     $nomor              = $data['nomor'];
-    $ongkir             = $data['ongkir'];
     $total              = $data['total'];
     $id_user            = $data['id_user'];
     $meja               = $data['meja'];
     $tgl_reservasi      = $data['tgl_reservasi'];
     $cara_bayar         = $data['cara_bayar'];
 
-    if ($jenis_pesanan == '' || $nomor == '' || $ongkir == '' || $total == '' || $id_user == ''){
+    if ($jenis_pesanan == '' || $nomor == '' || $total == '' || $id_user == ''){
         $message="Semua input harus diisi";
         $status=0;
     } else {
 
         //masukkan ke tabel pesanan master
-        $sql = "insert into pesanan_master (jenis_pesanan, nomor, ongkir, total, id_user, meja, tgl_reservasi, cara_bayar) VALUES (:jenis_pesanan, :nomor, :ongkir, :total, :id_user, :meja, :tgl_reservasi, :cara_bayar)";
+        $sql = "insert into pesanan_master (jenis_pesanan, nomor, total, id_user, meja, tgl_reservasi, cara_bayar) VALUES (:jenis_pesanan, :nomor, :total, :id_user, :meja, :tgl_reservasi, :cara_bayar)";
         $stmt = $db->prepare($sql);
 
         $param = array(
             ":jenis_pesanan" => $jenis_pesanan,
             ":nomor" => $nomor,
-            ":ongkir" => $ongkir,
             ":total" => $total,
             ":id_user" => $id_user,
             ":meja" => $meja,

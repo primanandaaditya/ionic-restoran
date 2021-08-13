@@ -270,7 +270,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"jenis_pesanan\":1,\n    \"nomor\":\"0003\",\n    \"ongkir\":10000,\n    \"total\":20000,\n    \"id_user\":3\n}",
+					"raw": "{\n    \"jenis_pesanan\":1,\n    \"nomor\":\"0003\",\n    \"ongkir\":10000,\n    \"total\":20000,\n    \"id_user\":3,\n    \"meja\":\"\",\n    \"tgl_reservasi\":\"2001/1/1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -288,6 +288,39 @@
 						"api",
 						"pesanan",
 						"add.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add reservasi",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jenis_pesanan\":2,\n    \"nomor\":\"0006\",\n    \"total\":20000,\n    \"id_user\":3,\n    \"meja\":\"\",\n    \"tgl_reservasi\":\"2001/1/1\",\n    \"cara_bayar\":\"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/restoran/api/pesanan/add_reservasi.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restoran",
+						"api",
+						"pesanan",
+						"add_reservasi.php"
 					]
 				}
 			},
