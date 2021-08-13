@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Konfirmasi Reservasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [class.ion-padding]="20">
+
+  <ion-radio-group [(ngModel)]="cara_bayar">
+    <ion-list-header>
+      <ion-label>Cara pembayaran</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Transfer bank</ion-label>
+      <ion-radio (click)="cekTransfer()" slot="start" value="0" checked></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Bayar di tempat</ion-label>
+      <ion-radio (click)="cekDiTempat()" slot="start" value="1"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+
+  <br>
+  <br>
+  <p>Jika Anda memilih transfer bank, pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>
+
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo-bca.jpg"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo_cimb.jpeg"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img style="object-fit: cover" src="assets/bank/logo_mandiri.png"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>154 234 529</h2>
+        <h3>a.n. Melissa</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <br>
+  <ion-button expand="full">Proses</ion-button>
+</ion-content>

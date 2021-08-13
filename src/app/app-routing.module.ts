@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'keranjang-reservasi',
     loadChildren: () => import('./keranjang-reservasi/keranjang-reservasi.module').then( m => m.KeranjangReservasiPageModule)
+  },
+  {
+    path: 'konf-reservasi',
+    loadChildren: () => import('./konf-reservasi/konf-reservasi.module').then( m => m.KonfReservasiPageModule)
   }
 ];
 @NgModule({
