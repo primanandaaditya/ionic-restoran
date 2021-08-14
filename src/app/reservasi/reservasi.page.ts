@@ -29,6 +29,7 @@ export class ReservasiPage implements OnInit {
               private storage: Storage) { }
 
   ngOnInit() {
+    this.mejaAktif='1';
   }
 
   aktifkanMeja(nomor){
@@ -115,9 +116,9 @@ export class ReservasiPage implements OnInit {
   }
 
   async simpanNomorMeja(){
+    console.log('tgl reservasi ' + this.tglReservasi.toString().substr(0,10));
     await this.storage.set(environment.NOMOR_MEJA, this.mejaAktif);
-    await this.storage.set(environment.TGL_RESERVASI, this.tglReservasi);
-    console.log('tgl reservasi ' + this.tglReservasi);
+    await this.storage.set(environment.TGL_RESERVASI, this.tglReservasi.toString().substr(0,10));
   }
 
 

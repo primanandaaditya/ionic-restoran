@@ -6,13 +6,17 @@
 
 <ion-content [class.ion-padding]="20">
 
-  <h3 style="text-align: center">Pilih meja</h3>
+  <h3 style="text-align: center">Pilih tanggal dan meja</h3>
 
+  <br>
+  <br>
   <ion-item>
     <ion-label>Tgl reservasi</ion-label>
-    <ion-datetime displayFormat="YYYY MMMM DD" [(ngModel)]="tglReservasi"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="tglReservasi"></ion-datetime>
   </ion-item>
 
+  <br>
+  <br>
   <ion-grid>
     <ion-row>
       <ion-col size="6">

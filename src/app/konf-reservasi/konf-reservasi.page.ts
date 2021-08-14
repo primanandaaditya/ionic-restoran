@@ -39,20 +39,27 @@ export class KonfReservasiPage implements OnInit {
     console.log('cara bayar : ' + this.cara_bayar);
   }
 
-  cekNilai(){
-
-  }
 
   async doBayar(){
 
     this.ls.present();
-    this.bayar.jenis_pesanan = 1;
-    this.bayar.id_user = await this.storage.get(environment.ID);
-    this.bayar.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-' + await this.storage.get(environment.ID);
-    this.bayar.ongkir = await this.storage.get(environment.HARGA);
-    this.bayar.total = await this.storage.get(environment.GRAND_TOTAL);
+    this.bayar.jenis_pesanan    = 2;
+    this.bayar.id_user          = await this.storage.get(environment.ID);
+    this.bayar.nomor            = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-' + await this.storage.get(environment.ID);
+    this.bayar.total            = await this.storage.get(environment.GRAND_TOTAL);
+    this.bayar.tgl_reservasi    = await this.storage.get(environment.TGL_RESERVASI);
+    this.bayar.meja             = await this.storage.get(environment.NOMOR_MEJA);
+    this.bayar.cara_bayar       = this.cara_bayar;
 
-    this.http.post(environment.baseUrl + 'pesanan/add.php', this.bayar).subscribe((res: any) => {
+    console.log('Jenis pesanan : ' +this.bayar.jenis_pesanan);
+    console.log('ID User : ' +this.bayar.id_user);
+    console.log('Nomor : ' +this.bayar.nomor);
+    console.log('Total : ' +this.bayar.total);
+    console.log('Tgl Reservasi : ' +this.bayar.tgl_reservasi);
+    console.log('No. meja : ' +this.bayar.meja);
+    console.log('Cara bayar : ' +this.bayar.cara_bayar);
+
+    this.http.post(environment.baseUrl + 'pesanan/add_reservasi.php', this.bayar).subscribe((res: any) => {
       console.log(res);
       this.ls.dismiss();
       this.showToast(res.message);

@@ -22,6 +22,7 @@ export const environment = {
 
   NOMOR_MEJA    :'nomor_meja',
   TGL_RESERVASI :'tgl_reservasi',
+  CARA_BAYAR    :'cara_bayar',
 
   Rupiah        :'Rp. '
 };
