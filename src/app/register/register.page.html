@@ -7,38 +7,60 @@
 <ion-content [class.ion-padding]="20">
 
   <br>
-
-
+  <form [formGroup]="regForm" (ngSubmit)="doRegister()">
     <ion-item>
       <ion-label position="floating">Nama</ion-label>
-      <ion-input [(ngModel)]="user.nama"></ion-input>
+      <ion-input formControlName="nama"></ion-input>
     </ion-item>
+    <div *ngFor="let error of errorMessages.nama">
+      <ng-container *ngIf="nama.hasError(error.type) && (nama.dirty || nama.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
+    <div *ngFor="let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input [(ngModel)]="user.password" ></ion-input>
+      <ion-input formControlName="password" ></ion-input>
     </ion-item>
+    <div *ngFor="let error of errorMessages.password">
+      <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
     <ion-item>
       <ion-label position="floating">Ulangi password</ion-label>
-      <ion-input [(ngModel)]="user.cpassword" ></ion-input>
+      <ion-input formControlName="cpassword"></ion-input>
     </ion-item>
-
+    <div *ngFor="let error of errorMessages.cpassword">
+      <ng-container *ngIf="cpassword.hasError(error.type) && (cpassword.dirty || cpassword.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
     <ion-item>
       <ion-label>Wilayah</ion-label>
-      <ion-select  [(ngModel)]="user.id_wilayah">
+      <ion-select formControlName="id_wilayah">
         <ion-select-option *ngFor="let item of listWilayah;" value="{{item.id}}">{{item.nama}} </ion-select-option>
       </ion-select>
     </ion-item>
+    <div *ngFor="let error of errorMessages.id_wilayah">
+      <ng-container *ngIf="id_wilayah.hasError(error.type) && (id_wilayah.dirty || id_wilayah.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
     <br>
-    <ion-button (click)="doRegister()" expand="full">Submit</ion-button>
-
-
+    <ion-button [disabled]="!regForm.valid" type="submit" expand="full">Submit</ion-button>
+  </form>
 </ion-content>

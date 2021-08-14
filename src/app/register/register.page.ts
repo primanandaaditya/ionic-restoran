@@ -4,6 +4,7 @@ import { LoadingService } from '../services/loading.service';
 import { ToastController } from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import { NavController } from '@ionic/angular';
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -18,12 +19,55 @@ export class RegisterPage implements OnInit {
   constructor( private http: HttpClient,
                private ls: LoadingService,
                private toast: ToastController,
-               public navCtrl: NavController
+               public navCtrl: NavController,
+               private formBuilder: FormBuilder
   ) { }
+
+  regForm = this.formBuilder.group({
+    nama:['', [Validators.required]],
+    email:['', [Validators.required]],
+    password:['',[Validators.required]],
+    cpassword:['', [Validators.required]],
+    id_wilayah:['', [Validators.required]]
+  });
+
+  get nama(){
+    return this.regForm.get('nama');
+  }
+  get email(){
+    return this.regForm.get('email');
+  }
+  get password(){
+    return this.regForm.get('password');
+  }
+  get cpassword(){
+    return this.regForm.get('cpassword');
+  }
+  get id_wilayah(){
+    return this.regForm.get('id_wilayah');
+  }
+
+  public errorMessages = {
+    nama:[
+      { type: 'required', message: 'Nama harus diisi'}
+    ],
+    email:[
+      { type: 'required', message: 'Email harus diisi'}
+    ],
+    password:[
+      { type: 'required', message: 'Password harus diisi'}
+    ],
+    cpassword:[
+      { type: 'required', message: 'Konfirmasi password harus diisi'}
+    ],
+    id_wilayah:[
+      { type: 'required', message: 'Wilayah harus diisi'}
+    ]
+  }
 
   doRegister(){
     this.ls.present();
-    this.http.post(environment.baseUrl + 'auth/register.php', this.user).subscribe((res: any) => {
+    this.http.post(environment.baseUrl + 'auth/register.php', this.regForm.value).subscribe((res: any) => {
       console.log(res);
       this.ls.dismiss();
       this.showToast(res.message);

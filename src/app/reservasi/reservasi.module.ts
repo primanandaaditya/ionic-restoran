@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from '@ionic/angular';
-
 import { ReservasiPageRoutingModule } from './reservasi-routing.module';
-
 import { ReservasiPage } from './reservasi.page';
 
 @NgModule({
@@ -13,6 +11,7 @@ import { ReservasiPage } from './reservasi.page';
     CommonModule,
     FormsModule,
     IonicModule,
+      ReactiveFormsModule,
     ReservasiPageRoutingModule
   ],
   declarations: [ReservasiPage]

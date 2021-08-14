@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -21,8 +22,31 @@ export class LoginPage implements OnInit {
     private ls: LoadingService,
     private toast: ToastController,
     public navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private formBuilder: FormBuilder
   ) { }
+
+  loginForm = this.formBuilder.group({
+    email:['', [Validators.required]],
+    password:['',[Validators.required]]
+  });
+
+  get email(){
+    return this.loginForm.get('email');
+  }
+
+  get password(){
+    return this.loginForm.get('password');
+  }
+
+  public errorMessages = {
+    email:[
+      { type: 'required', message: 'Email harus diisi'}
+    ],
+    password:[
+      { type: 'required', message: 'Password harus diisi'}
+    ]
+  }
 
   async ngOnInit() {
     const name = await this.storage.get('nama');
@@ -30,7 +54,7 @@ export class LoginPage implements OnInit {
   }
   async doLogin(){
     await this.ls.present();
-    this.http.post(environment.baseUrl + 'auth/login.php', this.user).subscribe(async (res: any) => {
+    this.http.post(environment.baseUrl + 'auth/login.php', this.loginForm.value).subscribe(async (res: any) => {
       await this.ls.dismiss();
       await this.showToast(res.pesan);
       if (res.error === false) {

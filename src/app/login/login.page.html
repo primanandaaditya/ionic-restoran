@@ -13,31 +13,34 @@
     <ion-img style="width: 120px; height: 120px" src="assets/icon/restaurant.png"></ion-img>
   </center>
 
-
-
   <br>
   <br>
-
   <br>
   <br>
+  <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input inputmode="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
-
-  <ion-item>
-    <ion-label position="stacked">Email</ion-label>
-    <ion-input [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Password</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
-
-  <br>
-  <br>
-
-  <center>
-    <ion-button expand="full" (click)="doLogin()">Submit</ion-button>
-  </center>
-
-
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.password">
+      <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
+    <br>
+    <br>
+    <center>
+      <ion-button [disabled]="!loginForm.valid" expand="full" type="submit">Submit</ion-button>
+    </center>
+  </form>
 </ion-content>

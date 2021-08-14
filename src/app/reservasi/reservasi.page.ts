@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-reservasi',
@@ -26,7 +27,8 @@ export class ReservasiPage implements OnInit {
               private ls: LoadingService,
               private toast: ToastController,
               public navCtrl: NavController,
-              private storage: Storage) { }
+              private storage: Storage,
+              private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.mejaAktif='1';
