@@ -2,8 +2,14 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+@font-face {
+  font-family: 'Dosis';    //This is what we are going to call
+  src: url('../assets/fonts/dosis/Dosis-Regular.ttf');
+}
+
 :root {
   /** primary **/
+  --ion-font-family: 'Dosis';
   --ion-color-primary: #FA1A03;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;

@@ -29,7 +29,16 @@
   <br>
   <br>
 
-  <ion-grid>
+  <div *ngIf="!isLogin">
+    <br>
+    <center>
+      <ion-label style="text-align: center">Anda belum login</ion-label>
+      <br>
+      <ion-button routerLink="/login">Login</ion-button>
+    </center>
+  </div>
+
+  <ion-grid *ngIf="isLogin">
     <ion-row>
       <ion-col size="6" size-md>
         <ion-button routerLink="/pilih-menu" expand="full">Delivery</ion-button>

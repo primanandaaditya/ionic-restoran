@@ -23,6 +23,7 @@ export class DetailPage implements OnInit {
   rupiah = environment.Rupiah;
   nama_wilayah;
   add: any = {};
+  isLogin;
   constructor(private storage: Storage,
               private http: HttpClient,
               private ls: LoadingService,
@@ -34,9 +35,21 @@ export class DetailPage implements OnInit {
   async ngOnInit() {
     this.idProduk = this.route.snapshot.paramMap.get('id');
     console.log('id produk: ' + this.idProduk);
-    this.getProdukDetail();
+
     this.nama_wilayah = await this.storage.get(environment.NAMA_WILAYAH);
     this.add.qty=1;
+  }
+
+  async ionViewWillEnter() {
+    var a = await this.storage.get(environment.IS_LOGIN);
+    if (a===false || a===null){
+      this.isLogin=false;
+    }else{
+      this.isLogin=true;
+      this.getProdukDetail();
+    }
+
+    console.log(new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString());
   }
 
   getProdukDetail(){

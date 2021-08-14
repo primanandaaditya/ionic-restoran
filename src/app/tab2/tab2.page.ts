@@ -23,6 +23,7 @@ export class Tab2Page implements OnInit{
   biaya;
   wilayah;
   grandTotal;
+  isLogin;
   constructor(private storage: Storage,
               private http: HttpClient,
               private ls: LoadingService,
@@ -30,7 +31,8 @@ export class Tab2Page implements OnInit{
               public navCtrl: NavController,
               private router: Router) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
     this.pathGambar = environment.gambarUrl;
   }
 
@@ -67,25 +69,34 @@ export class Tab2Page implements OnInit{
   }
 
   async getKeranjang(){
-    this.id_user = await this.storage.get(environment.ID);
-    this.biaya = await this.storage.get(environment.HARGA);
-    this.wilayah = await this.storage.get(environment.NAMA_WILAYAH);
 
-    this.user.id_user = this.id_user;
-    this.ls.present();
-    this.http.post(environment.baseUrl + 'keranjang/get.php', this.user).subscribe((res: any) => {
-      console.log(res);
-      this.ls.dismiss();
-      this.keranjang = res.message;
+    var a = await this.storage.get(environment.IS_LOGIN);
+    if (a === false || a === null){
+      this.isLogin=false;
+    }else{
+      this.isLogin=true;
+      this.id_user = await this.storage.get(environment.ID);
+      this.biaya = await this.storage.get(environment.HARGA);
+      this.wilayah = await this.storage.get(environment.NAMA_WILAYAH);
 
-      this.total = 0;
-      for (let item of this.keranjang){
-        this.total = this.total + parseInt(item['total']);
-      }
-      console.log('Total keranjang : ' + this.total);
-      this.grandTotal = parseInt(this.biaya) + parseInt(this.total);
-      this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
-    });
+      this.user.id_user = this.id_user;
+      this.ls.present();
+      this.http.post(environment.baseUrl + 'keranjang/get.php', this.user).subscribe((res: any) => {
+        console.log(res);
+        this.ls.dismiss();
+        this.keranjang = res.message;
+
+        this.total = 0;
+        for (let item of this.keranjang){
+          this.total = this.total + parseInt(item['total']);
+        }
+        console.log('Total keranjang : ' + this.total);
+        this.grandTotal = parseInt(this.biaya) + parseInt(this.total);
+        this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
+      });
+    }
+
+
   }
 
   async showToast(str){

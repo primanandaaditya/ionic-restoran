@@ -1,15 +1,26 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>KERANJANG RESERVASI</ion-title>
+    <ion-title>Keranjang Reservasi</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [class.ion-padding]="20" [fullscreen]="true">
 
-  <div *ngIf="total ==0">
-    <center><h3>Keranjang reservasi masih kosong</h3></center>
+  <div *ngIf="!isLogin">
     <br>
+    <center>
+      <ion-label style="text-align: center">Anda belum login</ion-label>
+      <br>
+      <ion-button routerLink="/login">Login</ion-button>
+    </center>
+  </div>
+
+
+  <div *ngIf="total ==0 && isLogin">
+    <center><h3>Anda belum melakukan reservasi</h3></center>
+    <br>
+    <ion-button routerLink="/reservasi" expand="full">Reservasi sekarang</ion-button>
   </div>
 
   <ion-list>

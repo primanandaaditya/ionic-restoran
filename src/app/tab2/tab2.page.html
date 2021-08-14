@@ -8,7 +8,17 @@
 
 <ion-content [class.ion-padding]="20" [fullscreen]="true">
 
-  <div *ngIf="total ==0">
+  <div *ngIf="!isLogin">
+
+    <br>
+    <center>
+      <ion-label style="text-align: center">Anda belum login</ion-label>
+      <br>
+    <ion-button routerLink="/login">Login</ion-button>
+    </center>
+  </div>
+
+  <div *ngIf="total ==0 && isLogin">
     <center><h3>Keranjang Anda masih kosong</h3></center>
     <br>
     <ion-button expand="full" routerLink="/pilih-menu">Mulai belanja</ion-button>

@@ -35,6 +35,14 @@ export class Tab4Page implements OnInit {
     await this.storage.set(environment.PASSWORD, '');
     await this.storage.set(environment.ID_WILAYAH, 0);
     await this.storage.set(environment.IS_LOGIN, false);
+    await this.storage.set(environment.HARGA,0);
+    await this.storage.set(environment.GRAND_TOTAL,0);
+    await this.storage.set(environment.CARA_BAYAR,'');
+    await this.storage.set(environment.NOMOR_MEJA,'');
+    await this.storage.set(environment.TGL_RESERVASI,'');
+    await this.storage.set(environment.ID_WILAYAH,'');
+    await this.storage.set(environment.PASSWORD,'');
+
     console.log('tab4 isLogin: ' + this.isLogin);
     await this.nav.navigateRoot('/');
   }

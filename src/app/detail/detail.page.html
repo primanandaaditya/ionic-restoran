@@ -6,30 +6,46 @@
 
 <ion-content [class.ion-padding]="20">
 
-  <center>
-    <ion-img style="width: 300px; height: 300px" src="{{ imagePath }}"></ion-img>
-  </center>
-  <h1 style="text-align: center">{{ nama }}</h1>
-  <h3 style="text-align: center">Rp. {{ harga }}</h3>
-  <p style="text-align: center">Dikirim ke : {{ nama_wilayah }}</p>
-  <ion-grid>
+  <div *ngIf="!isLogin">
+    <br>
+    <center>
+      <ion-label style="text-align: center">Anda belum login</ion-label>
+      <br>
+      <ion-button routerLink="/login">Login</ion-button>
+    </center>
+  </div>
 
-    <ion-row>
 
-      <ion-col class="ion-align-self-center">
-        Jumlah :
-      </ion-col>
-      <ion-col class="ion-align-self-center">
-        <ion-input style="text-align: center" [(ngModel)]="add.qty" min="1" max="50"  placeholder="Masukkan qty" value="1" type="number"></ion-input>
-      </ion-col>
-      <ion-col class="ion-align-self-center">
-        <ion-button (click)="addKeranjang()" expand="full">
-          <ion-icon name="cart-outline"></ion-icon>
-          Tambah</ion-button>
-      </ion-col>
-    </ion-row>
+  <div *ngIf="isLogin">
 
-  </ion-grid>
+    <center>
+      <ion-img style="width: 300px; height: 300px" src="{{ imagePath }}"></ion-img>
+    </center>
+    <h1 style="text-align: center">{{ nama }}</h1>
+    <h3 style="text-align: center">Rp. {{ harga }}</h3>
+    <p style="text-align: center">Dikirim ke : {{ nama_wilayah }}</p>
+    <ion-grid>
+
+      <ion-row>
+
+        <ion-col class="ion-align-self-center">
+          Jumlah :
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-input style="text-align: center" [(ngModel)]="add.qty" min="1" max="50"  placeholder="Masukkan qty" value="1" type="number"></ion-input>
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-button (click)="addKeranjang()" expand="full">
+            <ion-icon name="cart-outline"></ion-icon>
+            Tambah</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+  </div>
+
 
 
 

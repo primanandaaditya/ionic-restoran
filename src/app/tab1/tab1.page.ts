@@ -18,7 +18,7 @@ export class Tab1Page implements OnInit{
   pathGambar    = environment.gambarUrl;
   makanan       : [];
   minuman       : [];
-
+  isLogin;
   constructor(
       private storage: Storage,
       private http: HttpClient,
@@ -52,11 +52,18 @@ export class Tab1Page implements OnInit{
 
   async ionViewDidEnter() {
     this.nama = await this.storage.get('nama');
+
     console.log(this.nama);
 
   }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
+    var a = await this.storage.get(environment.IS_LOGIN);
+    if (a===null || a===false){
+      this.isLogin=false;
+    }else{
+      this.isLogin=true;
+    }
     this.getMakanan();
     this.getMinuman();
   }
