@@ -129,6 +129,13 @@ let Tab4Page = class Tab4Page {
             yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.PASSWORD, '');
             yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.ID_WILAYAH, 0);
             yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.IS_LOGIN, false);
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.HARGA, 0);
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.GRAND_TOTAL, 0);
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.CARA_BAYAR, '');
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.NOMOR_MEJA, '');
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.TGL_RESERVASI, '');
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.ID_WILAYAH, '');
+            yield this.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.PASSWORD, '');
             console.log('tab4 isLogin: ' + this.isLogin);
             yield this.nav.navigateRoot('/');
         });
@@ -170,7 +177,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Account</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"10\">\n\n  <!-- List of Text Items -->\n  <ion-list>\n    <div *ngIf=\"!isLogin\">\n      <ion-item routerLink=\"/login\">\n        <ion-label>Login</ion-label>\n      </ion-item>\n    </div>\n    <div *ngIf=\"isLogin\" (click)=\"logout()\">\n      <ion-item>\n        <ion-label>Logout</ion-label>\n      </ion-item>\n    </div>\n    <ion-item routerLink=\"/register\">\n      <ion-label>Register</ion-label>\n    </ion-item>\n    <ion-item routerLink=\"/faq\">\n      <ion-label>FAQ</ion-label>\n    </ion-item>\n    <ion-item routerLink=\"/hubungikami\">\n      <ion-label>Hubungi kami</ion-label>\n    </ion-item>\n  </ion-list>\n\n  <center><p><small>Ver 1.0.0</small></p></center>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Profil</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"10\">\n\n  <!-- List of Text Items -->\n  <ion-list>\n    <div *ngIf=\"!isLogin\">\n      <ion-item routerLink=\"/login\">\n        <ion-label>Login</ion-label>\n      </ion-item>\n    </div>\n    <div *ngIf=\"isLogin\" (click)=\"logout()\">\n      <ion-item>\n        <ion-label>Logout</ion-label>\n      </ion-item>\n    </div>\n    <ion-item routerLink=\"/register\">\n      <ion-label>Register</ion-label>\n    </ion-item>\n  </ion-list>\n\n  <center><p><small>Ver 1.0.0</small></p></center>\n\n</ion-content>\n");
 
 /***/ })
 

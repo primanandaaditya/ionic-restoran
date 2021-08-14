@@ -63,6 +63,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let LoginPageModule = class LoginPageModule {
 };
 LoginPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
@@ -70,6 +71,7 @@ LoginPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
             _login_routing_module__WEBPACK_IMPORTED_MODULE_0__.LoginPageRoutingModule
         ],
@@ -92,15 +94,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPage": function() { return /* binding */ LoginPage; }
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 76770);
 /* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 21339);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 91841);
 /* harmony import */ var _services_loading_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/loading.service */ 4471);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ 92340);
-/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/storage-angular */ 61628);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage-angular */ 61628);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 3679);
+
 
 
 
@@ -112,24 +116,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(http, ls, toast, navCtrl, storage) {
+    constructor(http, ls, toast, navCtrl, storage, formBuilder) {
         this.http = http;
         this.ls = ls;
         this.toast = toast;
         this.navCtrl = navCtrl;
         this.storage = storage;
+        this.formBuilder = formBuilder;
         this.user = {};
+        this.loginForm = this.formBuilder.group({
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]]
+        });
+        this.errorMessages = {
+            email: [
+                { type: 'required', message: 'Email harus diisi' }
+            ],
+            password: [
+                { type: 'required', message: 'Password harus diisi' }
+            ]
+        };
+    }
+    get email() {
+        return this.loginForm.get('email');
+    }
+    get password() {
+        return this.loginForm.get('password');
     }
     ngOnInit() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             const name = yield this.storage.get('nama');
             console.log(name);
         });
     }
     doLogin() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             yield this.ls.present();
-            this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'auth/login.php', this.user).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'auth/login.php', this.loginForm.value).subscribe((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
                 yield this.ls.dismiss();
                 yield this.showToast(res.pesan);
                 if (res.error === false) {
@@ -153,7 +176,7 @@ let LoginPage = class LoginPage {
         });
     }
     showToast(str) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             yield this.toast.create({
                 message: str,
                 duration: 2000,
@@ -169,14 +192,15 @@ let LoginPage = class LoginPage {
     }
 };
 LoginPage.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__.HttpClient },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__.HttpClient },
     { type: _services_loading_service__WEBPACK_IMPORTED_MODULE_2__.LoadingService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController },
-    { type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__.Storage }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ToastController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController },
+    { type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.Storage },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder }
 ];
-LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-login',
         template: _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_login_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -207,7 +231,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <center><ion-title>LOGIN</ion-title></center>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width: 100%\" [class.ion-padding]=\"20\">\n\n  <br>\n  <br>\n  <center>\n    <ion-img style=\"width: 120px; height: 120px\" src=\"assets/icon/restaurant.png\"></ion-img>\n  </center>\n\n\n\n  <br>\n  <br>\n\n  <br>\n  <br>\n\n\n  <ion-item>\n    <ion-label position=\"stacked\">Email</ion-label>\n    <ion-input [(ngModel)]=\"user.email\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"stacked\">Password</ion-label>\n    <ion-input type=\"password\" [(ngModel)]=\"user.password\"></ion-input>\n  </ion-item>\n\n  <br>\n  <br>\n\n  <center>\n    <ion-button expand=\"full\" (click)=\"doLogin()\">Submit</ion-button>\n  </center>\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <center><ion-title>LOGIN</ion-title></center>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width: 100%\" [class.ion-padding]=\"20\">\n\n  <br>\n  <br>\n  <center>\n    <ion-img style=\"width: 120px; height: 120px\" src=\"assets/icon/restaurant.png\"></ion-img>\n  </center>\n\n  <br>\n  <br>\n  <br>\n  <br>\n  <form [formGroup]=\"loginForm\" (ngSubmit)=\"doLogin()\">\n    <ion-item>\n      <ion-label position=\"stacked\">Email</ion-label>\n      <ion-input inputmode=\"text\" formControlName=\"email\"></ion-input>\n    </ion-item>\n    <div *ngFor=\"let error of errorMessages.email\">\n      <ng-container *ngIf=\"email.hasError(error.type) && (email.dirty || email.touched)\">\n        <center><small>{{ error.message }}</small></center>\n      </ng-container>\n    </div>\n\n    <ion-item>\n      <ion-label position=\"stacked\">Password</ion-label>\n      <ion-input type=\"password\" formControlName=\"password\"></ion-input>\n    </ion-item>\n    <div *ngFor=\"let error of errorMessages.password\">\n      <ng-container *ngIf=\"password.hasError(error.type) && (password.dirty || password.touched)\">\n        <center><small>{{ error.message }}</small></center>\n      </ng-container>\n    </div>\n    <br>\n    <br>\n    <center>\n      <ion-button [disabled]=\"!loginForm.valid\" expand=\"full\" type=\"submit\">Submit</ion-button>\n    </center>\n  </form>\n</ion-content>\n");
 
 /***/ })
 

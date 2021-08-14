@@ -32,7 +32,7 @@ export class KonfDeliveriPage implements OnInit {
     this.ls.present();
     this.bayar.jenis_pesanan = 1;
     this.bayar.id_user = await this.storage.get(environment.ID);
-    this.bayar.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-' + await this.storage.get(environment.ID);
+    this.bayar.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-1-'  + await this.storage.get(environment.ID);
     this.bayar.ongkir = await this.storage.get(environment.HARGA);
     this.bayar.total = await this.storage.get(environment.GRAND_TOTAL);
 

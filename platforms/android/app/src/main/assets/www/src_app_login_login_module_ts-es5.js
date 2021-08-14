@@ -133,7 +133,7 @@
       };
 
       _LoginPageModule = (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule, _login_routing_module__WEBPACK_IMPORTED_MODULE_0__.LoginPageRoutingModule],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule, _login_routing_module__WEBPACK_IMPORTED_MODULE_0__.LoginPageRoutingModule],
         declarations: [_login_page__WEBPACK_IMPORTED_MODULE_1__.LoginPage]
       })], _LoginPageModule);
       /***/
@@ -161,7 +161,7 @@
       /* harmony import */
 
 
-      var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! tslib */
       64762);
       /* harmony import */
@@ -179,13 +179,13 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/core */
       37716);
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/common/http */
       91841);
       /* harmony import */
@@ -197,7 +197,7 @@
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @ionic/angular */
       80476);
       /* harmony import */
@@ -209,12 +209,18 @@
       /* harmony import */
 
 
-      var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @ionic/storage-angular */
       61628);
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/forms */
+      3679);
 
       var _LoginPage = /*#__PURE__*/function () {
-        function LoginPage(http, ls, toast, navCtrl, storage) {
+        function LoginPage(http, ls, toast, navCtrl, storage, formBuilder) {
           _classCallCheck(this, LoginPage);
 
           this.http = http;
@@ -222,13 +228,38 @@
           this.toast = toast;
           this.navCtrl = navCtrl;
           this.storage = storage;
+          this.formBuilder = formBuilder;
           this.user = {};
+          this.loginForm = this.formBuilder.group({
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]]
+          });
+          this.errorMessages = {
+            email: [{
+              type: 'required',
+              message: 'Email harus diisi'
+            }],
+            password: [{
+              type: 'required',
+              message: 'Password harus diisi'
+            }]
+          };
         }
 
         _createClass(LoginPage, [{
+          key: "email",
+          get: function get() {
+            return this.loginForm.get('email');
+          }
+        }, {
+          key: "password",
+          get: function get() {
+            return this.loginForm.get('password');
+          }
+        }, {
           key: "ngOnInit",
           value: function ngOnInit() {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var name;
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
@@ -252,7 +283,7 @@
         }, {
           key: "doLogin",
           value: function doLogin() {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var _this = this;
 
               return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -263,8 +294,8 @@
                       return this.ls.present();
 
                     case 2:
-                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'auth/login.php', this.user).subscribe(function (res) {
-                        return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                      this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'auth/login.php', this.loginForm.value).subscribe(function (res) {
+                        return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                           return regeneratorRuntime.wrap(function _callee2$(_context2) {
                             while (1) {
                               switch (_context2.prev = _context2.next) {
@@ -348,7 +379,7 @@
         }, {
           key: "showToast",
           value: function showToast(str) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
               return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
                   switch (_context4.prev = _context4.next) {
@@ -383,19 +414,21 @@
 
       _LoginPage.ctorParameters = function () {
         return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__.HttpClient
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__.HttpClient
         }, {
           type: _services_loading_service__WEBPACK_IMPORTED_MODULE_2__.LoadingService
         }, {
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ToastController
         }, {
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController
         }, {
-          type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__.Storage
+          type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.Storage
+        }, {
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder
         }];
       };
 
-      _LoginPage = (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+      _LoginPage = (0, tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-login',
         template: _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
         styles: [_login_page_scss__WEBPACK_IMPORTED_MODULE_1__["default"]]
@@ -423,7 +456,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <center><ion-title>LOGIN</ion-title></center>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width: 100%\" [class.ion-padding]=\"20\">\n\n  <br>\n  <br>\n  <center>\n    <ion-img style=\"width: 120px; height: 120px\" src=\"assets/icon/restaurant.png\"></ion-img>\n  </center>\n\n\n\n  <br>\n  <br>\n\n  <br>\n  <br>\n\n\n  <ion-item>\n    <ion-label position=\"stacked\">Email</ion-label>\n    <ion-input [(ngModel)]=\"user.email\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"stacked\">Password</ion-label>\n    <ion-input type=\"password\" [(ngModel)]=\"user.password\"></ion-input>\n  </ion-item>\n\n  <br>\n  <br>\n\n  <center>\n    <ion-button expand=\"full\" (click)=\"doLogin()\">Submit</ion-button>\n  </center>\n\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <center><ion-title>LOGIN</ion-title></center>\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width: 100%\" [class.ion-padding]=\"20\">\n\n  <br>\n  <br>\n  <center>\n    <ion-img style=\"width: 120px; height: 120px\" src=\"assets/icon/restaurant.png\"></ion-img>\n  </center>\n\n  <br>\n  <br>\n  <br>\n  <br>\n  <form [formGroup]=\"loginForm\" (ngSubmit)=\"doLogin()\">\n    <ion-item>\n      <ion-label position=\"stacked\">Email</ion-label>\n      <ion-input inputmode=\"text\" formControlName=\"email\"></ion-input>\n    </ion-item>\n    <div *ngFor=\"let error of errorMessages.email\">\n      <ng-container *ngIf=\"email.hasError(error.type) && (email.dirty || email.touched)\">\n        <center><small>{{ error.message }}</small></center>\n      </ng-container>\n    </div>\n\n    <ion-item>\n      <ion-label position=\"stacked\">Password</ion-label>\n      <ion-input type=\"password\" formControlName=\"password\"></ion-input>\n    </ion-item>\n    <div *ngFor=\"let error of errorMessages.password\">\n      <ng-container *ngIf=\"password.hasError(error.type) && (password.dirty || password.touched)\">\n        <center><small>{{ error.message }}</small></center>\n      </ng-container>\n    </div>\n    <br>\n    <br>\n    <center>\n      <ion-button [disabled]=\"!loginForm.valid\" expand=\"full\" type=\"submit\">Submit</ion-button>\n    </center>\n  </form>\n</ion-content>\n";
       /***/
     }
   }]);

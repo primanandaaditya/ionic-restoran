@@ -243,20 +243,51 @@
                     case 0:
                       this.idProduk = this.route.snapshot.paramMap.get('id');
                       console.log('id produk: ' + this.idProduk);
-                      this.getProdukDetail();
-                      _context.next = 5;
+                      _context.next = 4;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NAMA_WILAYAH);
 
-                    case 5:
+                    case 4:
                       this.nama_wilayah = _context.sent;
                       this.add.qty = 1;
 
-                    case 7:
+                    case 6:
                     case "end":
                       return _context.stop();
                   }
                 }
               }, _callee, this);
+            }));
+          }
+        }, {
+          key: "ionViewWillEnter",
+          value: function ionViewWillEnter() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var a;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.IS_LOGIN);
+
+                    case 2:
+                      a = _context2.sent;
+
+                      if (a === false || a === null) {
+                        this.isLogin = false;
+                      } else {
+                        this.isLogin = true;
+                        this.getProdukDetail();
+                      }
+
+                      console.log(new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString());
+
+                    case 5:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
             }));
           }
         }, {
@@ -279,18 +310,18 @@
         }, {
           key: "addKeranjang",
           value: function addKeranjang() {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var _this2 = this;
 
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
-                  switch (_context2.prev = _context2.next) {
+                  switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context2.next = 2;
+                      _context3.next = 2;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
 
                     case 2:
-                      this.add.id_user = _context2.sent;
+                      this.add.id_user = _context3.sent;
                       this.add.id_produk = this.idProduk;
                       this.add.harga = this.harga;
                       console.log('data ' + this.add.id_user);
@@ -308,21 +339,21 @@
 
                     case 11:
                     case "end":
-                      return _context2.stop();
+                      return _context3.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee3, this);
             }));
           }
         }, {
           key: "showToast",
           value: function showToast(str) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context3.next = 2;
+                      _context4.next = 2;
                       return this.toast.create({
                         message: str,
                         duration: 2000,
@@ -339,10 +370,10 @@
 
                     case 2:
                     case "end":
-                      return _context3.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee3, this);
+              }, _callee4, this);
             }));
           }
         }]);
@@ -394,7 +425,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Detail Produk</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <center>\n    <ion-img style=\"width: 300px; height: 300px\" src=\"{{ imagePath }}\"></ion-img>\n  </center>\n  <h1 style=\"text-align: center\">{{ nama }}</h1>\n  <h3 style=\"text-align: center\">Rp. {{ harga }}</h3>\n  <p style=\"text-align: center\">Dikirim ke : {{ nama_wilayah }}</p>\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col class=\"ion-align-self-center\">\n        Jumlah :\n      </ion-col>\n      <ion-col class=\"ion-align-self-center\">\n        <ion-input style=\"text-align: center\" [(ngModel)]=\"add.qty\" min=\"1\" max=\"50\"  placeholder=\"Masukkan qty\" value=\"1\" type=\"number\"></ion-input>\n      </ion-col>\n      <ion-col class=\"ion-align-self-center\">\n        <ion-button (click)=\"addKeranjang()\" expand=\"full\">\n          <ion-icon name=\"cart-outline\"></ion-icon>\n          Tambah</ion-button>\n      </ion-col>\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Detail Produk</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <div *ngIf=\"!isLogin\">\n    <br>\n    <center>\n      <ion-label style=\"text-align: center\">Anda belum login</ion-label>\n      <br>\n      <ion-button routerLink=\"/login\">Login</ion-button>\n    </center>\n  </div>\n\n\n  <div *ngIf=\"isLogin\">\n\n    <center>\n      <ion-img style=\"width: 300px; height: 300px\" src=\"{{ imagePath }}\"></ion-img>\n    </center>\n    <h1 style=\"text-align: center\">{{ nama }}</h1>\n    <h3 style=\"text-align: center\">Rp. {{ harga }}</h3>\n    <p style=\"text-align: center\">Dikirim ke : {{ nama_wilayah }}</p>\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col class=\"ion-align-self-center\">\n          Jumlah :\n        </ion-col>\n        <ion-col class=\"ion-align-self-center\">\n          <ion-input style=\"text-align: center\" [(ngModel)]=\"add.qty\" min=\"1\" max=\"50\"  placeholder=\"Masukkan qty\" value=\"1\" type=\"number\"></ion-input>\n        </ion-col>\n        <ion-col class=\"ion-align-self-center\">\n          <ion-button (click)=\"addKeranjang()\" expand=\"full\">\n            <ion-icon name=\"cart-outline\"></ion-icon>\n            Tambah</ion-button>\n        </ion-col>\n      </ion-row>\n\n    </ion-grid>\n\n\n  </div>\n\n\n\n\n</ion-content>\n";
       /***/
     }
   }]);

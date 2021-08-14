@@ -248,28 +248,42 @@
         _createClass(Tab2Page, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            this.pathGambar = _environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.gambarUrl;
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.pathGambar = _environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.gambarUrl;
+
+                    case 1:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
           }
         }, {
           key: "ionViewWillEnter",
           value: function ionViewWillEnter() {
             this.getKeranjang();
+            console.log(new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString());
           }
         }, {
           key: "hapusItem",
           value: function hapusItem(id_produk) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
               var _this = this;
 
-              return regeneratorRuntime.wrap(function _callee$(_context) {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
-                  switch (_context.prev = _context.next) {
+                  switch (_context2.prev = _context2.next) {
                     case 0:
-                      _context.next = 2;
+                      _context2.next = 2;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
 
                     case 2:
-                      this.id_user = _context.sent;
+                      this.id_user = _context2.sent;
                       this.hapus.id_user = this.id_user;
                       this.hapus.id_produk = id_produk;
                       this.ls.present();
@@ -285,27 +299,27 @@
 
                     case 7:
                     case "end":
-                      return _context.stop();
+                      return _context2.stop();
                   }
                 }
-              }, _callee, this);
+              }, _callee2, this);
             }));
           }
         }, {
           key: "kosongKeranjang",
           value: function kosongKeranjang() {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var _this2 = this;
 
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
-                  switch (_context2.prev = _context2.next) {
+                  switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context2.next = 2;
+                      _context3.next = 2;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
 
                     case 2:
-                      this.id_user = _context2.sent;
+                      this.id_user = _context3.sent;
                       this.hapus.id_user = this.id_user;
                       this.ls.present();
                       this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/kosong.php', this.hapus).subscribe(function (res) {
@@ -320,37 +334,55 @@
 
                     case 6:
                     case "end":
-                      return _context2.stop();
+                      return _context3.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee3, this);
             }));
           }
         }, {
           key: "getKeranjang",
           value: function getKeranjang() {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
               var _this3 = this;
 
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              var a;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context3.next = 2;
-                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+                      _context4.next = 2;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.IS_LOGIN);
 
                     case 2:
-                      this.id_user = _context3.sent;
-                      _context3.next = 5;
+                      a = _context4.sent;
+
+                      if (!(a === false || a === null)) {
+                        _context4.next = 7;
+                        break;
+                      }
+
+                      this.isLogin = false;
+                      _context4.next = 20;
+                      break;
+
+                    case 7:
+                      this.isLogin = true;
+                      _context4.next = 10;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+
+                    case 10:
+                      this.id_user = _context4.sent;
+                      _context4.next = 13;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.HARGA);
 
-                    case 5:
-                      this.biaya = _context3.sent;
-                      _context3.next = 8;
+                    case 13:
+                      this.biaya = _context4.sent;
+                      _context4.next = 16;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NAMA_WILAYAH);
 
-                    case 8:
-                      this.wilayah = _context3.sent;
+                    case 16:
+                      this.wilayah = _context4.sent;
                       this.user.id_user = this.id_user;
                       this.ls.present();
                       this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'keranjang/get.php', this.user).subscribe(function (res) {
@@ -377,25 +409,27 @@
 
                         console.log('Total keranjang : ' + _this3.total);
                         _this3.grandTotal = parseInt(_this3.biaya) + parseInt(_this3.total);
+
+                        _this3.storage.set(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.GRAND_TOTAL, _this3.grandTotal);
                       });
 
-                    case 12:
+                    case 20:
                     case "end":
-                      return _context3.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee3, this);
+              }, _callee4, this);
             }));
           }
         }, {
           key: "showToast",
           value: function showToast(str) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
                 while (1) {
-                  switch (_context4.prev = _context4.next) {
+                  switch (_context5.prev = _context5.next) {
                     case 0:
-                      _context4.next = 2;
+                      _context5.next = 2;
                       return this.toast.create({
                         message: str,
                         duration: 2000,
@@ -412,10 +446,10 @@
 
                     case 2:
                     case "end":
-                      return _context4.stop();
+                      return _context5.stop();
                   }
                 }
-              }, _callee4, this);
+              }, _callee5, this);
             }));
           }
         }]);
@@ -467,7 +501,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <div *ngIf=\"total ==0\">\n    <center><h3>Keranjang Anda masih kosong</h3></center>\n\n\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-thumbnail slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n      <ion-avatar slot=\"end\">\n        <ion-icon (click)=\"hapusItem(item.id_produk)\" name=\"trash-outline\"></ion-icon>\n      </ion-avatar>\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf=\"total > 0\">\n    <ion-item>\n      <ion-label slot=\"start\">\n        Total:\n      </ion-label>\n      <ion-label  style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ total | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Ongkos kirim:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ biaya | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-label slot=\"start\">\n        Grand total:\n      </ion-label>\n      <ion-label style=\"text-align: end\" slot=\"end\">\n        <small>Rp. {{ grandTotal | number : fractionSize }}</small>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-button (click)=\"kosongKeranjang()\" expand=\"full\">Hapus keranjang</ion-button>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-button expand=\"full\">Beli</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Keranjang\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" [fullscreen]=\"true\">\n\n  <div *ngIf=\"!isLogin\">\n\n    <br>\n    <center>\n      <ion-label style=\"text-align: center\">Anda belum login</ion-label>\n      <br>\n    <ion-button routerLink=\"/login\">Login</ion-button>\n    </center>\n  </div>\n\n  <div *ngIf=\"total ==0 && isLogin\">\n    <center><h3>Keranjang Anda masih kosong</h3></center>\n    <br>\n    <ion-button expand=\"full\" routerLink=\"/pilih-menu\">Mulai belanja</ion-button>\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor=\"let item of keranjang;\">\n      <ion-thumbnail slot=\"start\">\n        <ion-img src=\"{{ pathGambar + item.gambar }}\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>{{ item.nama }}</h2>\n        <h3>{{ item.qty }} item @Rp. {{ item.harga }}</h3>\n        <p>Subtotal Rp. {{ item.total  }}</p>\n      </ion-label>\n      <ion-avatar slot=\"end\">\n        <ion-icon (click)=\"hapusItem(item.id_produk)\" name=\"trash-outline\"></ion-icon>\n      </ion-avatar>\n    </ion-item>\n  </ion-list>\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-label>Total :</ion-label>\n      </ion-col>\n      <ion-col class=\"ion-align-self-end\" size=\"6\" size-md>\n        <ion-label>Rp. {{ total | number : fractionSize }}</ion-label>\n      </ion-col>\n\n      <ion-col size=\"6\" size-md>\n        <ion-label>Ongkos kirim:</ion-label>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-label>Rp. {{ biaya | number : fractionSize }}</ion-label>\n      </ion-col>\n\n      <ion-col size=\"6\" size-md>\n        <ion-label>Grand total:</ion-label>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-label>Rp. {{ grandTotal | number : fractionSize }}</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n  <ion-grid *ngIf=\"total > 0\">\n    <ion-row>\n      <ion-col size=\"6\" size-md>\n        <ion-button (click)=\"kosongKeranjang()\" expand=\"full\">Batal</ion-button>\n      </ion-col>\n      <ion-col size=\"6\" size-md>\n        <ion-button routerLink=\"/konf-deliveri\" expand=\"full\">Beli</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n";
       /***/
     }
   }]);

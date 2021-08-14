@@ -67,6 +67,34 @@ const routes = [
     {
         path: 'detail/:id',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_detail_detail_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./detail/detail.module */ 9251)).then(m => m.DetailPageModule)
+    },
+    {
+        path: 'konf-deliveri',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_konf-deliveri_konf-deliveri_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./konf-deliveri/konf-deliveri.module */ 15777)).then(m => m.KonfDeliveriPageModule)
+    },
+    {
+        path: 'pilih-menu',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pilih-menu_pilih-menu_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pilih-menu/pilih-menu.module */ 39752)).then(m => m.PilihMenuPageModule)
+    },
+    {
+        path: 'reservasi',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_reservasi_reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./reservasi/reservasi.module */ 40288)).then(m => m.ReservasiPageModule)
+    },
+    {
+        path: 'menu-reservasi',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_menu-reservasi_menu-reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./menu-reservasi/menu-reservasi.module */ 28272)).then(m => m.MenuReservasiPageModule)
+    },
+    {
+        path: 'order-reservasi/:id',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_order-reservasi_order-reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./order-reservasi/order-reservasi.module */ 23516)).then(m => m.OrderReservasiPageModule)
+    },
+    {
+        path: 'keranjang-reservasi',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_keranjang-reservasi_keranjang-reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./keranjang-reservasi/keranjang-reservasi.module */ 65933)).then(m => m.KeranjangReservasiPageModule)
+    },
+    {
+        path: 'konf-reservasi',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_konf-reservasi_konf-reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./konf-reservasi/konf-reservasi.module */ 28568)).then(m => m.KonfReservasiPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -202,6 +230,10 @@ const environment = {
     IS_LOGIN: 'isLogin',
     NAMA_WILAYAH: 'nama_wilayah',
     HARGA: 'harga',
+    GRAND_TOTAL: 'grandtotal',
+    NOMOR_MEJA: 'nomor_meja',
+    TGL_RESERVASI: 'tgl_reservasi',
+    CARA_BAYAR: 'cara_bayar',
     Rupiah: 'Rp. '
 };
 /*

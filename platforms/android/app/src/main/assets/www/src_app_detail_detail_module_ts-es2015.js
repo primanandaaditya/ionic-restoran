@@ -128,9 +128,21 @@ let DetailPage = class DetailPage {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             this.idProduk = this.route.snapshot.paramMap.get('id');
             console.log('id produk: ' + this.idProduk);
-            this.getProdukDetail();
             this.nama_wilayah = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NAMA_WILAYAH);
             this.add.qty = 1;
+        });
+    }
+    ionViewWillEnter() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            var a = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.IS_LOGIN);
+            if (a === false || a === null) {
+                this.isLogin = false;
+            }
+            else {
+                this.isLogin = true;
+                this.getProdukDetail();
+            }
+            console.log(new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString());
         });
     }
     getProdukDetail() {
@@ -217,7 +229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Detail Produk</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <center>\n    <ion-img style=\"width: 300px; height: 300px\" src=\"{{ imagePath }}\"></ion-img>\n  </center>\n  <h1 style=\"text-align: center\">{{ nama }}</h1>\n  <h3 style=\"text-align: center\">Rp. {{ harga }}</h3>\n  <p style=\"text-align: center\">Dikirim ke : {{ nama_wilayah }}</p>\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col class=\"ion-align-self-center\">\n        Jumlah :\n      </ion-col>\n      <ion-col class=\"ion-align-self-center\">\n        <ion-input style=\"text-align: center\" [(ngModel)]=\"add.qty\" min=\"1\" max=\"50\"  placeholder=\"Masukkan qty\" value=\"1\" type=\"number\"></ion-input>\n      </ion-col>\n      <ion-col class=\"ion-align-self-center\">\n        <ion-button (click)=\"addKeranjang()\" expand=\"full\">\n          <ion-icon name=\"cart-outline\"></ion-icon>\n          Tambah</ion-button>\n      </ion-col>\n    </ion-row>\n\n  </ion-grid>\n\n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Detail Produk</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <div *ngIf=\"!isLogin\">\n    <br>\n    <center>\n      <ion-label style=\"text-align: center\">Anda belum login</ion-label>\n      <br>\n      <ion-button routerLink=\"/login\">Login</ion-button>\n    </center>\n  </div>\n\n\n  <div *ngIf=\"isLogin\">\n\n    <center>\n      <ion-img style=\"width: 300px; height: 300px\" src=\"{{ imagePath }}\"></ion-img>\n    </center>\n    <h1 style=\"text-align: center\">{{ nama }}</h1>\n    <h3 style=\"text-align: center\">Rp. {{ harga }}</h3>\n    <p style=\"text-align: center\">Dikirim ke : {{ nama_wilayah }}</p>\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col class=\"ion-align-self-center\">\n          Jumlah :\n        </ion-col>\n        <ion-col class=\"ion-align-self-center\">\n          <ion-input style=\"text-align: center\" [(ngModel)]=\"add.qty\" min=\"1\" max=\"50\"  placeholder=\"Masukkan qty\" value=\"1\" type=\"number\"></ion-input>\n        </ion-col>\n        <ion-col class=\"ion-align-self-center\">\n          <ion-button (click)=\"addKeranjang()\" expand=\"full\">\n            <ion-icon name=\"cart-outline\"></ion-icon>\n            Tambah</ion-button>\n        </ion-col>\n      </ion-row>\n\n    </ion-grid>\n\n\n  </div>\n\n\n\n\n</ion-content>\n");
 
 /***/ })
 
