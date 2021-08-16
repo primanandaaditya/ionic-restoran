@@ -6,29 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20" [fullscreen]="true">
+
+
+
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card [class.ion-padding-top]="10" [class.ion-padding-bottom]="5">
-    <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 1500} }">
-      <ion-slide>
-        <div class="slide">
-          <small>Selamat datang di aplikasi restoran {{ this.nama }}</small>
-        </div>
-      </ion-slide>
-      <ion-slide>
-        <small>Mohon pilih delivery atau takeaway untuk melihat menu</small>
-      </ion-slide>
-    </ion-slides>
-  </ion-card>
-
+  <ion-img src="assets/icon/cabe-merah.png"></ion-img>
   <br>
-  <br>
-
   <div *ngIf="!isLogin">
     <br>
     <center>
@@ -48,10 +37,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-  <br>
-  <br>
 
   <div style="align-content: center">
     <ion-slides pager="true" [options]="{ slidesPerView:1, autoplay: {delay: 2500} }">

@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20" [fullscreen]="true">
+<ion-content class="background" [class.ion-padding]="20"  [fullscreen]="true">
 
   <div *ngIf="!isLogin">
 
@@ -24,7 +24,7 @@
     <ion-button expand="full" routerLink="/pilih-menu">Mulai belanja</ion-button>
   </div>
 
-  <ion-list>
+  <ion-list *ngIf="total > 0 && isLogin">
     <ion-item *ngFor="let item of keranjang;">
       <ion-thumbnail slot="start">
         <ion-img src="{{ pathGambar + item.gambar }}"></ion-img>

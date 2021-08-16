@@ -4,116 +4,71 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20">
+<ion-content class="background" [class.ion-padding]="20">
 
-  <h3 style="text-align: center">Pilih tanggal dan meja</h3>
+  <h3 style="text-align: center">Denah Meja</h3>
 
   <br>
+  <ion-img src="assets/icon/denah.png">
+  </ion-img>
   <br>
+  <form [formGroup]="resForm" (ngSubmit)="simpanNomorMeja()">
   <ion-item>
-    <ion-label>Tgl reservasi</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="tglReservasi"></ion-datetime>
+    <ion-label>Pilih meja</ion-label>
+    <ion-select formControlName="nomeja" placeholder="Select One">
+      <ion-select-option value="1">Nomor 1</ion-select-option>
+      <ion-select-option value="3">Nomor 3</ion-select-option>
+      <ion-select-option value="5">Nomor 5</ion-select-option>
+      <ion-select-option value="7">Nomor 7</ion-select-option>
+      <ion-select-option value="8">Nomor 8</ion-select-option>
+      <ion-select-option value="9">Nomor 9</ion-select-option>
+      <ion-select-option value="11">Nomor 11</ion-select-option>
+      <ion-select-option value="12">Nomor 12</ion-select-option>
+      <ion-select-option value="15">Nomor 15</ion-select-option>
+      <ion-select-option value="16">Nomor 16</ion-select-option>
+      <ion-select-option value="17">Nomor 17</ion-select-option>
+      <ion-select-option value="19">Nomor 19</ion-select-option>
+      <ion-select-option value="20">Nomor 20</ion-select-option>
+      <ion-select-option value="21">Nomor 21</ion-select-option>
+      <ion-select-option value="22">Nomor 22</ion-select-option>
+      <ion-select-option value="23">Nomor 23</ion-select-option>
+      <ion-select-option value="24">Nomor 24</ion-select-option>
+      <ion-select-option value="25">Nomor 25</ion-select-option>
+      <ion-select-option value="26">Nomor 26</ion-select-option>
+      <ion-select-option value="27">Nomor 27</ion-select-option>
+      <ion-select-option value="28">Nomor 28</ion-select-option>
+      <ion-select-option value="30">Nomor 30</ion-select-option>
+      <ion-select-option value="31">Nomor 31</ion-select-option>
+      <ion-select-option value="32">Nomor 32</ion-select-option>
+      <ion-select-option value="33">Nomor 33</ion-select-option>
+      <ion-select-option value="36">Nomor 36</ion-select-option>
+      <ion-select-option value="37">Nomor 37</ion-select-option>
+      <ion-select-option value="38">Nomor 38</ion-select-option>
+      <ion-select-option value="39">Nomor 39</ion-select-option>
+      <ion-select-option value="40">Nomor 40</ion-select-option>
+      <ion-select-option value="41">Nomor 41</ion-select-option>
+      <ion-select-option value="42">Nomor 42</ion-select-option>
+      <ion-select-option value="43">Nomor 43</ion-select-option>
+      <ion-select-option value="46">Nomor 46</ion-select-option>
+      <ion-select-option value="47">Nomor 47</ion-select-option>
+    </ion-select>
   </ion-item>
+    <div *ngFor="let error of errorMessages.nomeja">
+      <ng-container *ngIf="nomeja.hasError(error.type) && (nomeja.dirty || nomeja.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
-  <br>
-  <br>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <ion-card [color]="warna1" (click)="aktifkanMeja(1)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>1</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card [color]="warna2" (click)="aktifkanMeja(2)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>2</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+    <ion-item>
+    <ion-label>Tanggal reservasi</ion-label>
+    <ion-datetime formControlName="tglres" displayFormat="YYYY-MM-DD"></ion-datetime>
+  </ion-item>
+    <div *ngFor="let error of errorMessages.tglres">
+      <ng-container *ngIf="tglres.hasError(error.type) && (tglres.dirty || tglres.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
+    <ion-button routerLink="/menu-reservasi" [disabled]="!resForm.valid" type="submit" expand="full">Pilih menu</ion-button>
+  </form>
 
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-card [color]="warna3" (click)="aktifkanMeja(3)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>3</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-card [color]="warna4" (click)="aktifkanMeja(4)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>4</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card [color]="warna5" (click)="aktifkanMeja(5)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>5</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-card [color]="warna6" (click)="aktifkanMeja(6)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>6</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card [color]="warna7" (click)="aktifkanMeja(7)">
-          <ion-card-header>
-            <center>
-              <ion-card-subtitle>MEJA</ion-card-subtitle>
-            </center>
-          </ion-card-header>
-          <ion-card-content>
-            <center><h1>7</h1></center>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-
-  <ion-button routerLink="/menu-reservasi" (click)="simpanNomorMeja()" expand="full">Pilih menu</ion-button>
 </ion-content>

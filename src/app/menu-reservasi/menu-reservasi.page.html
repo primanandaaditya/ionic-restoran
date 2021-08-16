@@ -4,9 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20">
+<ion-content class="background" [class.ion-padding]="20">
 
   <center><h2>Menu makanan</h2></center>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/keranjang-reservasi">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of makanan;" size="6">
@@ -43,6 +50,4 @@
     </ion-row>
   </ion-grid>
 
-
-  <ion-button routerLink="/keranjang-reservasi" expand="full">Lihat Keranjang Reservasi</ion-button>
 </ion-content>

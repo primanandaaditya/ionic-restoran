@@ -7,6 +7,7 @@ import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { FormBuilder, Validators} from "@angular/forms";
 
+
 @Component({
   selector: 'app-reservasi',
   templateUrl: './reservasi.page.html',
@@ -29,6 +30,26 @@ export class ReservasiPage implements OnInit {
               public navCtrl: NavController,
               private storage: Storage,
               private formBuilder: FormBuilder ) { }
+
+  resForm = this.formBuilder.group({
+    nomeja:['', [Validators.required]],
+    tglres:['',[Validators.required]]
+  });
+
+  get nomeja(){
+    return this.resForm.get('nomeja');
+  }
+  get tglres(){
+    return this.resForm.get('tglres');
+  }
+  public errorMessages = {
+    nomeja:[
+      { type: 'required', message: 'Nomor meja harus dipilih'}
+    ],
+    tglres:[
+      { type: 'required', message: 'Tanggal reservasi harus diisi'}
+    ]
+  }
 
   ngOnInit() {
     this.mejaAktif='1';
@@ -118,9 +139,12 @@ export class ReservasiPage implements OnInit {
   }
 
   async simpanNomorMeja(){
-    console.log('tgl reservasi ' + this.tglReservasi.toString().substr(0,10));
-    await this.storage.set(environment.NOMOR_MEJA, this.mejaAktif);
-    await this.storage.set(environment.TGL_RESERVASI, this.tglReservasi.toString().substr(0,10));
+    // console.log('tgl reservasi ' + this.tglReservasi.toString().substr(0,10));
+    var tgl = this.resForm.value.tglres.toString().substr(0,10);
+    console.log('No meja : ' + this.resForm.value.nomeja);
+    console.log('Tgl reservasi : ' + tgl);
+    await this.storage.set(environment.NOMOR_MEJA, this.resForm.value.nomeja);
+    await this.storage.set(environment.TGL_RESERVASI, tgl);
   }
 
 
