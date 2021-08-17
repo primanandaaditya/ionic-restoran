@@ -5,26 +5,27 @@
 export const environment = {
   production: false,
 
-  baseUrl2      :'http://www.baktimu.id/restoran/api/',
-  gambarUrl2    :'http://www.baktimu.id/restoran/gambar/',
+  baseUrl2                :'http://www.baktimu.id/restoran/api/',
+  gambarUrl2              :'http://www.baktimu.id/restoran/gambar/',
 
-  baseUrl       :'http://localhost/restoran/api/',
-  gambarUrl     :'http://localhost/restoran/gambar/',
+  baseUrl                 :'http://localhost/restoran/api/',
+  gambarUrl               :'http://localhost/restoran/gambar/',
 
-  NAMA          :'nama',
-  ID            :'id',
-  PASSWORD      :'password',
-  ID_WILAYAH    :'id_wilayah',
-  IS_LOGIN      :'isLogin',
-  NAMA_WILAYAH  :'nama_wilayah',
-  HARGA         :'harga',
-  GRAND_TOTAL   :'grandtotal',
+  NAMA                    :'nama',
+  ID                      :'id',
+  PASSWORD                :'password',
+  ID_WILAYAH              :'id_wilayah',
+  IS_LOGIN                :'isLogin',
+  NAMA_WILAYAH            :'nama_wilayah',
+  HARGA                   :'harga',
+  GRAND_TOTAL             :'grandtotal',
+  GRAND_TOTAL_RESERVASI   :'grandtotalreservasi',
 
-  NOMOR_MEJA    :'nomor_meja',
-  TGL_RESERVASI :'tgl_reservasi',
-  CARA_BAYAR    :'cara_bayar',
+  NOMOR_MEJA              :'nomor_meja',
+  TGL_RESERVASI           :'tgl_reservasi',
+  CARA_BAYAR              :'cara_bayar',
 
-  Rupiah        :'Rp. '
+  Rupiah                  :'Rp. '
 };
 
 /*

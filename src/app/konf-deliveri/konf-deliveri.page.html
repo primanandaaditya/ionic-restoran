@@ -4,9 +4,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20">
+<ion-content class="background" [class.ion-padding]="20">
 
-  <p>Pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>
+  <ion-list>
+    <ion-radio-group value="0">
+      <ion-list-header>
+        <ion-label>Metode Pembayaran</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Transfer</ion-label>
+        <ion-radio slot="start" value="0"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Bayar di tempat</ion-label>
+        <ion-radio slot="start" value="1"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+
+  <p>Jika memilih transfer, pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>
 
   <ion-list>
     <ion-item>

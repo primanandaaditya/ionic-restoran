@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.ion-padding]="20">
+<ion-content class="background" [class.ion-padding]="20">
 
   <p>Pembayaran minimal 50%, bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>
 
@@ -40,6 +40,27 @@
     </ion-item>
   </ion-list>
 
-  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Nomor transaksi (mohon sertakan nomor ini dalam berita)</ion-card-subtitle>
+      <ion-card-title>{{ nomor }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Total yang harus dibayar</ion-card-subtitle>
+      <ion-card-title>Rp. {{ total }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
   <ion-button (click)="doBayar()" expand="full">Proses</ion-button>
 </ion-content>

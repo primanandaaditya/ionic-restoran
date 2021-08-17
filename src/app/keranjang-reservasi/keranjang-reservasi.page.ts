@@ -92,7 +92,7 @@ export class KeranjangReservasiPage implements OnInit {
         }
         console.log('Total keranjang : ' + this.total);
         this.grandTotal =  parseInt(this.total);
-        this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
+        this.storage.set(environment.GRAND_TOTAL_RESERVASI, this.grandTotal);
       });
     }
 
