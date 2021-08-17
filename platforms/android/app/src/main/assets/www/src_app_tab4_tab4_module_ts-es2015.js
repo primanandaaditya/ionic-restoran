@@ -177,7 +177,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Profil</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"10\">\n\n  <!-- List of Text Items -->\n  <ion-list>\n    <div *ngIf=\"!isLogin\">\n      <ion-item routerLink=\"/login\">\n        <ion-label>Login</ion-label>\n      </ion-item>\n    </div>\n    <div *ngIf=\"isLogin\" (click)=\"logout()\">\n      <ion-item>\n        <ion-label>Logout</ion-label>\n      </ion-item>\n    </div>\n    <ion-item routerLink=\"/register\">\n      <ion-label>Register</ion-label>\n    </ion-item>\n  </ion-list>\n\n  <center><p><small>Ver 1.0.0</small></p></center>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Profil</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"10\">\n\n  <!-- List of Text Items -->\n  <ion-list>\n    <div *ngIf=\"!isLogin\">\n      <ion-item routerLink=\"/login\">\n        <ion-label>Login</ion-label>\n      </ion-item>\n    </div>\n    <div *ngIf=\"isLogin\" >\n      <ion-item routerLink=\"/upload-bukti-transfer\">\n        <ion-label>Upload bukti transfer</ion-label>\n      </ion-item>\n    </div>\n    <div *ngIf=\"isLogin\">\n      <ion-item (click)=\"logout()\">\n        <ion-label>Logout</ion-label>\n      </ion-item>\n    </div>\n    <ion-item routerLink=\"/register\">\n      <ion-label>Register</ion-label>\n    </ion-item>\n  </ion-list>\n\n  <center><p><small>Ver 1.0.0</small></p></center>\n\n</ion-content>\n");
 
 /***/ })
 

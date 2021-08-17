@@ -1308,3 +1308,6 @@ sub {
 .ion-align-items-baseline {
   align-items: baseline !important;
 }
+ion-content.background {
+  --background: url(/assets/icon/back.jpg) 0 0/100% 100% no-repeat;
+}

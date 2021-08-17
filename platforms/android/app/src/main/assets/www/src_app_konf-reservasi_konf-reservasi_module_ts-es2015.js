@@ -131,23 +131,29 @@ let KonfReservasiPage = class KonfReservasiPage {
         this.cara_bayar = '1';
         console.log('cara bayar : ' + this.cara_bayar);
     }
+    ionViewWillEnter() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
+            this.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + '-2-' + (yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID));
+            this.total = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.GRAND_TOTAL_RESERVASI);
+        });
+    }
     doBayar() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             this.ls.present();
             this.bayar.jenis_pesanan = 2;
             this.bayar.id_user = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
-            this.bayar.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-2-' + (yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID));
+            this.bayar.nomor = this.nomor;
             this.bayar.total = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.GRAND_TOTAL);
             this.bayar.tgl_reservasi = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.TGL_RESERVASI);
             this.bayar.meja = yield this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NOMOR_MEJA);
-            this.bayar.cara_bayar = this.cara_bayar;
+            this.bayar.status_pesanan = 1;
             console.log('Jenis pesanan : ' + this.bayar.jenis_pesanan);
             console.log('ID User : ' + this.bayar.id_user);
             console.log('Nomor : ' + this.bayar.nomor);
             console.log('Total : ' + this.bayar.total);
             console.log('Tgl Reservasi : ' + this.bayar.tgl_reservasi);
             console.log('No. meja : ' + this.bayar.meja);
-            console.log('Cara bayar : ' + this.bayar.cara_bayar);
+            console.log('status_pesanan : ' + this.bayar.status_pesanan);
             this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'pesanan/add_reservasi.php', this.bayar).subscribe((res) => {
                 console.log(res);
                 this.ls.dismiss();
@@ -213,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Konfirmasi Reservasi</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <ion-radio-group [(ngModel)]=\"cara_bayar\">\n    <ion-list-header>\n      <ion-label>Cara pembayaran</ion-label>\n    </ion-list-header>\n\n    <ion-item>\n      <ion-label>Transfer bank</ion-label>\n      <ion-radio (click)=\"cekTransfer()\" slot=\"start\" value=\"0\" checked></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Bayar di tempat</ion-label>\n      <ion-radio (click)=\"cekDiTempat()\" slot=\"start\" value=\"1\"></ion-radio>\n    </ion-item>\n  </ion-radio-group>\n\n  <br>\n  <br>\n  <p>Jika Anda memilih transfer bank, pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>\n\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo-bca.jpg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_cimb.jpeg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_mandiri.png\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <br>\n  <ion-button (click)=\"doBayar()\" expand=\"full\">Proses</ion-button>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Konfirmasi Reservasi</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"background\" [class.ion-padding]=\"20\">\n\n  <p>Pembayaran minimal 50%, bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>\n\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo-bca.jpg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_cimb.jpeg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_mandiri.png\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Nomor transaksi (mohon sertakan nomor ini dalam berita)</ion-card-subtitle>\n      <ion-card-title>{{ nomor }}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Total yang harus dibayar</ion-card-subtitle>\n      <ion-card-title>Rp. {{ total }}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n    </ion-card-content>\n  </ion-card>\n\n  <ion-button (click)=\"doBayar()\" expand=\"full\">Proses</ion-button>\n</ion-content>\n");
 
 /***/ })
 

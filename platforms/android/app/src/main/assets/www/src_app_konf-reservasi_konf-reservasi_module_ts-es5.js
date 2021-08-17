@@ -243,52 +243,75 @@
             console.log('cara bayar : ' + this.cara_bayar);
           }
         }, {
-          key: "doBayar",
-          value: function doBayar() {
+          key: "ionViewWillEnter",
+          value: function ionViewWillEnter() {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var _this = this;
-
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
+                      _context.t0 = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + '-2-';
+                      _context.next = 3;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
+
+                    case 3:
+                      _context.t1 = _context.sent;
+                      this.nomor = _context.t0 + _context.t1;
+                      _context.next = 7;
+                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.GRAND_TOTAL_RESERVASI);
+
+                    case 7:
+                      this.total = _context.sent;
+
+                    case 8:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "doBayar",
+          value: function doBayar() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this = this;
+
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
                       this.ls.present();
                       this.bayar.jenis_pesanan = 2;
-                      _context.next = 4;
+                      _context2.next = 4;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
 
                     case 4:
-                      this.bayar.id_user = _context.sent;
-                      _context.t0 = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-2-';
-                      _context.next = 8;
-                      return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.ID);
-
-                    case 8:
-                      _context.t1 = _context.sent;
-                      this.bayar.nomor = _context.t0 + _context.t1;
-                      _context.next = 12;
+                      this.bayar.id_user = _context2.sent;
+                      this.bayar.nomor = this.nomor;
+                      _context2.next = 8;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.GRAND_TOTAL);
 
-                    case 12:
-                      this.bayar.total = _context.sent;
-                      _context.next = 15;
+                    case 8:
+                      this.bayar.total = _context2.sent;
+                      _context2.next = 11;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.TGL_RESERVASI);
 
-                    case 15:
-                      this.bayar.tgl_reservasi = _context.sent;
-                      _context.next = 18;
+                    case 11:
+                      this.bayar.tgl_reservasi = _context2.sent;
+                      _context2.next = 14;
                       return this.storage.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.NOMOR_MEJA);
 
-                    case 18:
-                      this.bayar.meja = _context.sent;
-                      this.bayar.cara_bayar = this.cara_bayar;
+                    case 14:
+                      this.bayar.meja = _context2.sent;
+                      this.bayar.status_pesanan = 1;
                       console.log('Jenis pesanan : ' + this.bayar.jenis_pesanan);
                       console.log('ID User : ' + this.bayar.id_user);
                       console.log('Nomor : ' + this.bayar.nomor);
                       console.log('Total : ' + this.bayar.total);
                       console.log('Tgl Reservasi : ' + this.bayar.tgl_reservasi);
                       console.log('No. meja : ' + this.bayar.meja);
-                      console.log('Cara bayar : ' + this.bayar.cara_bayar);
+                      console.log('status_pesanan : ' + this.bayar.status_pesanan);
                       this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.baseUrl + 'pesanan/add_reservasi.php', this.bayar).subscribe(function (res) {
                         console.log(res);
 
@@ -301,23 +324,23 @@
                         }
                       });
 
-                    case 28:
+                    case 24:
                     case "end":
-                      return _context.stop();
+                      return _context2.stop();
                   }
                 }
-              }, _callee, this);
+              }, _callee2, this);
             }));
           }
         }, {
           key: "showToast",
           value: function showToast(str) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
-                  switch (_context2.prev = _context2.next) {
+                  switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context2.next = 2;
+                      _context3.next = 2;
                       return this.toast.create({
                         message: str,
                         duration: 2000,
@@ -334,10 +357,10 @@
 
                     case 2:
                     case "end":
-                      return _context2.stop();
+                      return _context3.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee3, this);
             }));
           }
         }]);
@@ -387,7 +410,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Konfirmasi Reservasi</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\">\n\n  <ion-radio-group [(ngModel)]=\"cara_bayar\">\n    <ion-list-header>\n      <ion-label>Cara pembayaran</ion-label>\n    </ion-list-header>\n\n    <ion-item>\n      <ion-label>Transfer bank</ion-label>\n      <ion-radio (click)=\"cekTransfer()\" slot=\"start\" value=\"0\" checked></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Bayar di tempat</ion-label>\n      <ion-radio (click)=\"cekDiTempat()\" slot=\"start\" value=\"1\"></ion-radio>\n    </ion-item>\n  </ion-radio-group>\n\n  <br>\n  <br>\n  <p>Jika Anda memilih transfer bank, pembayaran bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>\n\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo-bca.jpg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_cimb.jpeg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_mandiri.png\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <br>\n  <ion-button (click)=\"doBayar()\" expand=\"full\">Proses</ion-button>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Konfirmasi Reservasi</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"background\" [class.ion-padding]=\"20\">\n\n  <p>Pembayaran minimal 50%, bisa dilakukan melalui transfer ke salah satu rekening berikut: </p>\n\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo-bca.jpg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_cimb.jpeg\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-thumbnail slot=\"start\">\n        <ion-img style=\"object-fit: cover\" src=\"assets/bank/logo_mandiri.png\"></ion-img>\n      </ion-thumbnail>\n      <ion-label>\n        <h2>154 234 529</h2>\n        <h3>a.n. Melissa</h3>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Nomor transaksi (mohon sertakan nomor ini dalam berita)</ion-card-subtitle>\n      <ion-card-title>{{ nomor }}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Total yang harus dibayar</ion-card-subtitle>\n      <ion-card-title>Rp. {{ total }}</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n    </ion-card-content>\n  </ion-card>\n\n  <ion-button (click)=\"doBayar()\" expand=\"full\">Proses</ion-button>\n</ion-content>\n";
       /***/
     }
   }]);

@@ -65,10 +65,10 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() */
-            [__webpack_require__.e("common"), __webpack_require__.e("src_app_tab2_tab2_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
-            /*! ../tab2/tab2.module */
-            14608)).then(function (m) {
-              return m.Tab2PageModule;
+            [__webpack_require__.e("common"), __webpack_require__.e("src_app_keranjang-delivery_keranjang-delivery_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
+            /*! ../keranjang-delivery/keranjang-delivery.module */
+            73341)).then(function (m) {
+              return m.KeranjangDeliveryPageModule;
             });
           }
         }, {

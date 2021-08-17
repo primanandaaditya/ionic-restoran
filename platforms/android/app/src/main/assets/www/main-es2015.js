@@ -95,6 +95,14 @@ const routes = [
     {
         path: 'konf-reservasi',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_konf-reservasi_konf-reservasi_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./konf-reservasi/konf-reservasi.module */ 28568)).then(m => m.KonfReservasiPageModule)
+    },
+    {
+        path: 'keranjang-delivery',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_keranjang-delivery_keranjang-delivery_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./keranjang-delivery/keranjang-delivery.module */ 73341)).then(m => m.KeranjangDeliveryPageModule)
+    },
+    {
+        path: 'upload-bukti-transfer',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_upload-bukti-transfer_upload-bukti-transfer_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./upload-bukti-transfer/upload-bukti-transfer.module */ 66338)).then(m => m.UploadBuktiTransferPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -169,15 +177,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": function() { return /* binding */ AppModule; }
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ 39075);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 80476);
-/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/storage-angular */ 54925);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ 39075);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage-angular */ 54925);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 90158);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 55041);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ 91841);
+/* harmony import */ var _ionic_native_file_chooser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/file-chooser */ 90787);
+
 
 
 
@@ -189,12 +199,15 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppModule = class AppModule {
 };
-AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_6__.HttpClientModule, _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_7__.IonicStorageModule.forRoot()],
-        providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_8__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.IonicRouteStrategy }],
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_7__.HttpClientModule, _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.IonicStorageModule.forRoot()],
+        providers: [
+            _ionic_native_file_chooser__WEBPACK_IMPORTED_MODULE_2__.FileChooser,
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_9__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy }
+        ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent]
     })
 ], AppModule);
@@ -219,10 +232,10 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    baseUrl: 'http://www.baktimu.id/restoran/api/',
-    gambarUrl: 'http://www.baktimu.id/restoran/gambar/',
-    baseUrl2: 'http://localhost/restoran/api/',
-    gambarUrl2: 'http://localhost/restoran/gambar/',
+    baseUrl2: 'http://www.baktimu.id/restoran/api/',
+    gambarUrl2: 'http://www.baktimu.id/restoran/gambar/',
+    baseUrl: 'http://localhost/restoran/api/',
+    gambarUrl: 'http://localhost/restoran/gambar/',
     NAMA: 'nama',
     ID: 'id',
     PASSWORD: 'password',
@@ -231,6 +244,7 @@ const environment = {
     NAMA_WILAYAH: 'nama_wilayah',
     HARGA: 'harga',
     GRAND_TOTAL: 'grandtotal',
+    GRAND_TOTAL_RESERVASI: 'grandtotalreservasi',
     NOMOR_MEJA: 'nomor_meja',
     TGL_RESERVASI: 'tgl_reservasi',
     CARA_BAYAR: 'cara_bayar',

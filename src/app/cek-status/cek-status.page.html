@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cek Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" [class.ion-padding]="20">
+
+    <ion-card *ngFor="let item of list;">
+      <ion-card-header>
+        <ion-card-subtitle>{{ item.nama }}</ion-card-subtitle>
+        <ion-card-title>No. transaksi: {{ item.nomor }}</ion-card-title>
+        <ion-card-subtitle>Tanggal {{ item.tanggal }}</ion-card-subtitle>
+        <ion-card-subtitle>Total Rp. {{ item.total }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ item.keterangan }}
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

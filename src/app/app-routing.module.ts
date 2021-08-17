@@ -61,6 +61,14 @@ const routes: Routes = [
   {
     path: 'keranjang-delivery',
     loadChildren: () => import('./keranjang-delivery/keranjang-delivery.module').then( m => m.KeranjangDeliveryPageModule)
+  },
+  {
+    path: 'upload-bukti-transfer',
+    loadChildren: () => import('./upload-bukti-transfer/upload-bukti-transfer.module').then( m => m.UploadBuktiTransferPageModule)
+  },
+  {
+    path: 'cek-status',
+    loadChildren: () => import('./cek-status/cek-status.module').then( m => m.CekStatusPageModule)
   }
 ];
 @NgModule({
