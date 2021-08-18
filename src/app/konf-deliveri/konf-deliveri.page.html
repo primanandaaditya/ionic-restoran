@@ -12,12 +12,12 @@
         <ion-label>Metode Pembayaran</ion-label>
       </ion-list-header>
 
-      <ion-item>
+      <ion-item (click)="cekTransfer()">
         <ion-label>Transfer</ion-label>
         <ion-radio slot="start" value="0"></ion-radio>
       </ion-item>
 
-      <ion-item>
+      <ion-item (click)="cekDiTempat()">
         <ion-label>Bayar di tempat</ion-label>
         <ion-radio slot="start" value="1"></ion-radio>
       </ion-item>
@@ -58,6 +58,29 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Nomor transaksi (mohon sertakan nomor ini dalam berita)</ion-card-subtitle>
+      <ion-card-title>{{ nomor }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Total yang harus dibayar</ion-card-subtitle>
+      <ion-card-title>Rp. {{ total }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
 
   <br>
   <ion-button (click)="doBayar()" expand="full">Proses</ion-button>

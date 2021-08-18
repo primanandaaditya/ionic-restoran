@@ -18,6 +18,7 @@ export class KonfDeliveriPage implements OnInit {
   ongkir;
   total;
   id_user;
+  cara_bayar;
   constructor(private http: HttpClient,
               private ls: LoadingService,
               private toast: ToastController,
@@ -25,18 +26,37 @@ export class KonfDeliveriPage implements OnInit {
               public navCtrl: NavController) { }
 
   ngOnInit() {
+    this.cara_bayar=1;
+  }
+
+  cekTransfer(){
+    this.cara_bayar=1;
+    console.log('cara bayar : ' + this.cara_bayar);
+  }
+
+  cekDiTempat(){
+    this.cara_bayar=2;
+    console.log('cara bayar : ' + this.cara_bayar);
+  }
+
+  async ionViewWillEnter() {
+    this.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + '-1-'  + await this.storage.get(environment.ID);
+    this.total = await this.storage.get(environment.GRAND_TOTAL);
   }
 
   async doBayar(){
 
-    this.ls.present();
+    // this.ls.present();
     this.bayar.jenis_pesanan = 1;
     this.bayar.id_user = await this.storage.get(environment.ID);
-    this.bayar.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDay().toString() + '-1-'  + await this.storage.get(environment.ID);
+    this.bayar.nomor = this.nomor;
     this.bayar.ongkir = await this.storage.get(environment.HARGA);
     this.bayar.total = await this.storage.get(environment.GRAND_TOTAL);
+    this.bayar.cara_bayar = this.cara_bayar;
+    this.bayar.status_pesanan = 1;
 
-    this.http.post(environment.baseUrl + 'pesanan/add.php', this.bayar).subscribe((res: any) => {
+    console.log(this.bayar);
+    this.http.post(environment.baseUrl + 'pesanan/add_delivery.php', this.bayar).subscribe((res: any) => {
       console.log(res);
       this.ls.dismiss();
       this.showToast(res.message);
