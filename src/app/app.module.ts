@@ -11,6 +11,7 @@ import {File, FileOriginal} from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { Camera } from "@ionic-native/camera/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
         FileChooser,
         FilePath,
         FileTransfer,
+          Camera,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
 })

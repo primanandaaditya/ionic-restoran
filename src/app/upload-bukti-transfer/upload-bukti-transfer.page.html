@@ -6,8 +6,20 @@
 
 <ion-content [class.ion-padding]="20" class="background">
 
-  <button ion-button color="light" (click)="ChooseFile()">Choose File</button>
-  <p text-wrap>{{FileName}}</p>
+  <ion-button (click)="takePicture()">Kamera</ion-button>
+
+  <ion-card *ngIf="currentImage">
+    <ion-card-header>
+      <ion-card-subtitle>Hasil Kamera</ion-card-subtitle>
+      <ion-card-title>Pastikan foto struk jelas dan dapat dilihat</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img [src]="currentImage" *ngIf="currentImage">
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button *ngIf="currentImage" (click)="upload()" expand="full">Upload</ion-button>
 
 
 </ion-content>

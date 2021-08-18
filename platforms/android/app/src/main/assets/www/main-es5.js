@@ -234,12 +234,23 @@
       }, {
         path: 'upload-bukti-transfer',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() */
-          "src_app_upload-bukti-transfer_upload-bukti-transfer_module_ts").then(__webpack_require__.bind(__webpack_require__,
+          [__webpack_require__.e("common"), __webpack_require__.e("src_app_upload-bukti-transfer_upload-bukti-transfer_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
           /*! ./upload-bukti-transfer/upload-bukti-transfer.module */
           66338)).then(function (m) {
             return m.UploadBuktiTransferPageModule;
+          });
+        }
+      }, {
+        path: 'cek-status',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() */
+          [__webpack_require__.e("common"), __webpack_require__.e("src_app_cek-status_cek-status_module_ts")]).then(__webpack_require__.bind(__webpack_require__,
+          /*! ./cek-status/cek-status.module */
+          42152)).then(function (m) {
+            return m.CekStatusPageModule;
           });
         }
       }];
@@ -374,37 +385,37 @@
       /* harmony import */
 
 
-      var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! tslib */
       64762);
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/core */
       37716);
       /* harmony import */
 
 
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @angular/platform-browser */
       39075);
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! @angular/router */
       39895);
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @ionic/angular */
       80476);
       /* harmony import */
 
 
-      var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! @ionic/storage-angular */
       54925);
       /* harmony import */
@@ -422,27 +433,45 @@
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/common/http */
       91841);
       /* harmony import */
 
 
-      var _ionic_native_file_chooser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @ionic-native/file-chooser */
-      90787);
+      var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic-native/file-chooser/ngx */
+      81953);
+      /* harmony import */
+
+
+      var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @ionic-native/file-path/ngx */
+      59865);
+      /* harmony import */
+
+
+      var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic-native/file-transfer/ngx */
+      97905);
+      /* harmony import */
+
+
+      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @ionic-native/camera/ngx */
+      84267);
 
       var _AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
       };
 
-      _AppModule = (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
+      _AppModule = (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_7__.NgModule)({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_7__.HttpClientModule, _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.IonicStorageModule.forRoot()],
-        providers: [_ionic_native_file_chooser__WEBPACK_IMPORTED_MODULE_2__.FileChooser, {
-          provide: _angular_router__WEBPACK_IMPORTED_MODULE_9__.RouteReuseStrategy,
-          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_10__.HttpClientModule, _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_11__.IonicStorageModule.forRoot()],
+        providers: [_ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_2__.FileChooser, _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__.FilePath, _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__.FileTransfer, _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__.Camera, {
+          provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__.RouteReuseStrategy,
+          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicRouteStrategy
         }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent]
       })], _AppModule);
@@ -476,8 +505,10 @@
         production: false,
         baseUrl2: 'http://www.baktimu.id/restoran/api/',
         gambarUrl2: 'http://www.baktimu.id/restoran/gambar/',
-        baseUrl: 'http://localhost/restoran/api/',
-        gambarUrl: 'http://localhost/restoran/gambar/',
+        baseUrl3: 'http://localhost/restoran/api/',
+        gambarUrl3: 'http://localhost/restoran/gambar/',
+        baseUrl: 'http://10.0.3.2/restoran/api/',
+        gambarUrl: 'http://10.0.3.2/restoran/gambar/',
         NAMA: 'nama',
         ID: 'id',
         PASSWORD: 'password',
