@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import {ReactiveFormsModule} from "@angular/forms";
 import { IonicModule } from '@ionic/angular';
 
 import { UploadBuktiTransferPageRoutingModule } from './upload-bukti-transfer-routing.module';
@@ -13,7 +13,8 @@ import { UploadBuktiTransferPage } from './upload-bukti-transfer.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    UploadBuktiTransferPageRoutingModule
+    UploadBuktiTransferPageRoutingModule,
+      ReactiveFormsModule
   ],
   declarations: [UploadBuktiTransferPage]
 })

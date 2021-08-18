@@ -133,7 +133,7 @@
       };
 
       _UploadBuktiTransferPageModule = (0, tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule, _upload_bukti_transfer_routing_module__WEBPACK_IMPORTED_MODULE_0__.UploadBuktiTransferPageRoutingModule],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule, _upload_bukti_transfer_routing_module__WEBPACK_IMPORTED_MODULE_0__.UploadBuktiTransferPageRoutingModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule],
         declarations: [_upload_bukti_transfer_page__WEBPACK_IMPORTED_MODULE_1__.UploadBuktiTransferPage]
       })], _UploadBuktiTransferPageModule);
       /***/
@@ -161,7 +161,7 @@
       /* harmony import */
 
 
-      var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! tslib */
       64762);
       /* harmony import */
@@ -179,7 +179,7 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/core */
       37716);
       /* harmony import */
@@ -209,24 +209,46 @@
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @ionic/angular */
       80476);
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @angular/forms */
+      3679);
 
       var _UploadBuktiTransferPage = /*#__PURE__*/function () {
-        function UploadBuktiTransferPage(camera, ls, toast, transfer) {
+        function UploadBuktiTransferPage(camera, ls, toast, formBuilder, navCtrl, transfer) {
           _classCallCheck(this, UploadBuktiTransferPage);
 
           this.camera = camera;
           this.ls = ls;
           this.toast = toast;
+          this.formBuilder = formBuilder;
+          this.navCtrl = navCtrl;
           this.transfer = transfer;
           this.returnPath = '';
+          this.bukForm = this.formBuilder.group({
+            nomor: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]]
+          });
+          this.errorMessages = {
+            nomor: [{
+              type: 'required',
+              message: 'Nomor harus diisi'
+            }]
+          };
         }
 
         _createClass(UploadBuktiTransferPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
+        }, {
+          key: "nomor",
+          get: function get() {
+            return this.bukForm.get('nomor');
+          }
         }, {
           key: "takePicture",
           value: function takePicture() {
@@ -259,7 +281,7 @@
               fileName: this.imgData + '.jpeg',
               chunkedMode: false,
               params: {
-                'nomor': '2021717-1-3'
+                'nomor': this.bukForm.value.nomor
               },
               headers: {}
             };
@@ -268,7 +290,13 @@
 
               _this2.ls.dismiss();
 
-              _this2.showToast(data.response);
+              if (data.responseCode === 200) {
+                _this2.showToast("Upload bukti transfer berhasil");
+              } else {
+                _this2.showToast("Upload bukti transfer gagal/belum terkirim");
+              }
+
+              _this2.navCtrl.navigateRoot('/');
             }, function (err) {
               console.log(err);
 
@@ -280,7 +308,7 @@
         }, {
           key: "showToast",
           value: function showToast(str) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
@@ -319,13 +347,17 @@
         }, {
           type: _services_loading_service__WEBPACK_IMPORTED_MODULE_5__.LoadingService
         }, {
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ToastController
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ToastController
+        }, {
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.NavController
         }, {
           type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_3__.FileTransfer
         }];
       };
 
-      _UploadBuktiTransferPage = (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+      _UploadBuktiTransferPage = (0, tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0, _angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-upload-bukti-transfer',
         template: _raw_loader_upload_bukti_transfer_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
         styles: [_upload_bukti_transfer_page_scss__WEBPACK_IMPORTED_MODULE_1__["default"]]
@@ -353,7 +385,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Upload Bukti Transfer</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" class=\"background\">\n\n  <ion-button (click)=\"takePicture()\">Kamera</ion-button>\n\n  <ion-card *ngIf=\"currentImage\">\n    <ion-card-header>\n      <ion-card-subtitle>Hasil Kamera</ion-card-subtitle>\n      <ion-card-title>Pastikan foto struk jelas dan dapat dilihat</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      <img [src]=\"currentImage\" *ngIf=\"currentImage\">\n    </ion-card-content>\n  </ion-card>\n\n  <ion-button *ngIf=\"currentImage\" (click)=\"upload()\" expand=\"full\">Upload</ion-button>\n\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Upload Bukti Transfer</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [class.ion-padding]=\"20\" class=\"background\">\n\n  <ion-button (click)=\"takePicture()\" expand=\"full\">\n    <ion-icon slot=\"start\" name=\"camera\"></ion-icon>\n    Buka kamera\n  </ion-button>\n\n  <br>\n  <form [formGroup]=\"bukForm\" *ngIf=\"currentImage\" (ngSubmit)=\"upload()\">\n\n    <ion-card *ngIf=\"currentImage\">\n      <ion-card-header>\n        <ion-card-subtitle>Hasil Kamera</ion-card-subtitle>\n        <ion-card-title>Pastikan foto struk jelas/tidak buram</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <img [src]=\"currentImage\" *ngIf=\"currentImage\">\n      </ion-card-content>\n    </ion-card>\n\n    <br>\n    <ion-item>\n      <ion-label position=\"stacked\">Nomor transaksi</ion-label>\n      <ion-input inputmode=\"text\" formControlName=\"nomor\"></ion-input>\n    </ion-item>\n    <div *ngFor=\"let error of errorMessages.nomor\">\n      <ng-container *ngIf=\"nomor.hasError(error.type) && (nomor.dirty || nomor.touched)\">\n        <center><small>{{ error.message }}</small></center>\n      </ng-container>\n    </div>\n\n    <br>\n    <ion-button [disabled]=\"!bukForm.valid\" (click)=\"upload()\" expand=\"full\">Upload</ion-button>\n  </form>\n</ion-content>\n";
       /***/
     }
   }]);

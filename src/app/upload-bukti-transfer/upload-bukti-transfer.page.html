@@ -6,20 +6,37 @@
 
 <ion-content [class.ion-padding]="20" class="background">
 
-  <ion-button (click)="takePicture()">Kamera</ion-button>
+  <ion-button (click)="takePicture()" expand="full">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Buka kamera
+  </ion-button>
 
-  <ion-card *ngIf="currentImage">
-    <ion-card-header>
-      <ion-card-subtitle>Hasil Kamera</ion-card-subtitle>
-      <ion-card-title>Pastikan foto struk jelas dan dapat dilihat</ion-card-title>
-    </ion-card-header>
+  <br>
+  <form [formGroup]="bukForm" *ngIf="currentImage" (ngSubmit)="upload()">
 
-    <ion-card-content>
-      <img [src]="currentImage" *ngIf="currentImage">
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngIf="currentImage">
+      <ion-card-header>
+        <ion-card-subtitle>Hasil Kamera</ion-card-subtitle>
+        <ion-card-title>Pastikan foto struk jelas/tidak buram</ion-card-title>
+      </ion-card-header>
 
-  <ion-button *ngIf="currentImage" (click)="upload()" expand="full">Upload</ion-button>
+      <ion-card-content>
+        <img [src]="currentImage" *ngIf="currentImage">
+      </ion-card-content>
+    </ion-card>
 
+    <br>
+    <ion-item>
+      <ion-label position="stacked">Nomor transaksi</ion-label>
+      <ion-input inputmode="text" formControlName="nomor"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.nomor">
+      <ng-container *ngIf="nomor.hasError(error.type) && (nomor.dirty || nomor.touched)">
+        <center><small>{{ error.message }}</small></center>
+      </ng-container>
+    </div>
 
+    <br>
+    <ion-button [disabled]="!bukForm.valid" (click)="upload()" expand="full">Upload</ion-button>
+  </form>
 </ion-content>
