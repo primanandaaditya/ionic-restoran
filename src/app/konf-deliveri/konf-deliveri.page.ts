@@ -40,20 +40,29 @@ export class KonfDeliveriPage implements OnInit {
   }
 
   async ionViewWillEnter() {
-    this.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + '-1-'  + await this.storage.get(environment.ID);
+    this.nomor = new
+    Date().getFullYear().toString() +
+        new Date().getMonth().toString() +
+        new Date().getDate().toString() +
+        new Date().getHours().toString() +
+        new Date().getMinutes().toString() +
+        new Date().getSeconds().toString() +
+        + '1'  + await this.storage.get(environment.ID);
     this.total = await this.storage.get(environment.GRAND_TOTAL);
   }
 
   async doBayar(){
 
     // this.ls.present();
-    this.bayar.jenis_pesanan = 1;
-    this.bayar.id_user = await this.storage.get(environment.ID);
-    this.bayar.nomor = this.nomor;
-    this.bayar.ongkir = await this.storage.get(environment.HARGA);
-    this.bayar.total = await this.storage.get(environment.GRAND_TOTAL);
-    this.bayar.cara_bayar = this.cara_bayar;
-    this.bayar.status_pesanan = 1;
+    this.bayar.jenis_pesanan          = 1;
+    this.bayar.id_user                = await this.storage.get(environment.ID);
+    this.bayar.nomor                  = this.nomor;
+    this.bayar.ongkir                 = await this.storage.get(environment.HARGA);
+    this.bayar.total                  = await this.storage.get(environment.GRAND_TOTAL);
+    this.bayar.cara_bayar             = this.cara_bayar;
+    this.bayar.status_pesanan         = 1;
+    this.bayar.alamat                 = await this.storage.get(environment.ALAMAT_LENGKAP);
+    this.bayar.id_wilayah             = await this.storage.get(environment.ID_WILAYAH);
 
     console.log(this.bayar);
     this.http.post(environment.baseUrl + 'pesanan/add_delivery.php', this.bayar).subscribe((res: any) => {

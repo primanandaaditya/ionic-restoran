@@ -6,6 +6,7 @@ import { ToastController } from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-keranjang-delivery',
@@ -22,21 +23,82 @@ export class KeranjangDeliveryPage implements OnInit {
   total;
   biaya;
   wilayah;
+  ongkir;
   grandTotal;
   isLogin;
+  jarak;
+  listWilayah: any =  [];
+  hasil:any={};
+  postGetOngkir:any={};
+
   constructor(private storage: Storage,
               private http: HttpClient,
               private ls: LoadingService,
               private toast: ToastController,
               public navCtrl: NavController,
+              private formBuilder: FormBuilder,
               private router: Router) { }
 
   ngOnInit() {
     this.pathGambar = environment.gambarUrl;
+    this.ongkir = 0;
+  }
+
+  keranjangForm = this.formBuilder.group({
+    id_wilayah:['', [Validators.required]],
+    alamat:['',[Validators.required]]
+  });
+  get id_wilayah(){
+    return this.keranjangForm.get('id_wilayah');
+  }
+  get alamat(){
+    return this.keranjangForm.get('alamat');
+  }
+  public errorMessages = {
+    id_wilayah:[
+      { type: 'required', message: 'Wilayah harus diisi'}
+    ],
+    alamat:[
+      { type: 'required', message: 'Alamat lengkap harus diisi detail'}
+    ]
+  }
+
+  async simpan(){
+    await this.storage.set(environment.ALAMAT_LENGKAP,this.alamat.value );
+    console.log('alamat lengkap ' + this.alamat.value);
+  }
+
+   gantiWilayah(){
+    this.postGetOngkir.id_wilayah = this.id_wilayah.value;
+    this.http.post(environment.baseUrl + 'wilayah/cari_ongkir.php', this.postGetOngkir).subscribe((res: any) => {
+      this.ls.present();
+      if (res.error === false ){
+
+        this.storage.set(environment.HARGA, res.hasil.harga);
+        this.storage.set(environment.ID_WILAYAH, res.hasil.id);
+        this.storage.set(environment.NAMA_WILAYAH, res.hasil.nama);
+        this.storage.set(environment.JARAK, res.hasil.jarak);
+
+        this.ongkir = res.hasil.harga;
+        this.jarak = res.hasil.jarak;
+
+        this.total = 0;
+        for (let item of this.keranjang){
+          this.total = this.total + parseInt(item['total']);
+        }
+        console.log('Total keranjang : ' + this.total);
+        this.grandTotal = parseInt(this.ongkir) + parseInt(this.total);
+        this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
+      }
+
+      this.hasil = res.hasil;
+      this.ls.dismiss();
+    });
   }
 
   ionViewWillEnter() {
     this.getKeranjang();
+    this.getWilayah();
     console.log(new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString());
   }
 
@@ -90,12 +152,19 @@ export class KeranjangDeliveryPage implements OnInit {
           this.total = this.total + parseInt(item['total']);
         }
         console.log('Total keranjang : ' + this.total);
-        this.grandTotal = parseInt(this.biaya) + parseInt(this.total);
+        this.grandTotal = parseInt(this.ongkir) + parseInt(this.total);
         this.storage.set(environment.GRAND_TOTAL, this.grandTotal);
       });
     }
+  }
 
-
+  getWilayah(){
+    this.http.get(environment.baseUrl + 'wilayah/list_wilayah.php').subscribe((res: any) => {
+      this.ls.present();
+      console.log(res);
+      this.listWilayah = res.list;
+      this.ls.dismiss();
+    });
   }
 
   async showToast(str){

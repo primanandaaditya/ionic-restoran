@@ -48,17 +48,17 @@
       </ng-container>
     </div>
 
-    <ion-item>
-      <ion-label>Wilayah</ion-label>
-      <ion-select formControlName="id_wilayah">
-        <ion-select-option *ngFor="let item of listWilayah;" value="{{item.id}}">{{item.nama}} </ion-select-option>
-      </ion-select>
-    </ion-item>
-    <div *ngFor="let error of errorMessages.id_wilayah">
-      <ng-container *ngIf="id_wilayah.hasError(error.type) && (id_wilayah.dirty || id_wilayah.touched)">
-        <center><small>{{ error.message }}</small></center>
-      </ng-container>
-    </div>
+<!--    <ion-item>-->
+<!--      <ion-label>Wilayah</ion-label>-->
+<!--      <ion-select formControlName="id_wilayah">-->
+<!--        <ion-select-option *ngFor="let item of listWilayah;" value="{{item.id}}">{{item.nama}} </ion-select-option>-->
+<!--      </ion-select>-->
+<!--    </ion-item>-->
+<!--    <div *ngFor="let error of errorMessages.id_wilayah">-->
+<!--      <ng-container *ngIf="id_wilayah.hasError(error.type) && (id_wilayah.dirty || id_wilayah.touched)">-->
+<!--        <center><small>{{ error.message }}</small></center>-->
+<!--      </ng-container>-->
+<!--    </div>-->
 
     <br>
     <ion-button [disabled]="!regForm.valid" type="submit" expand="full">Submit</ion-button>

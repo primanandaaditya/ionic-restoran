@@ -245,12 +245,12 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    baseUrl2: 'http://www.baktimu.id/restoran/api/',
-    gambarUrl2: 'http://www.baktimu.id/restoran/gambar/',
+    baseUrl: 'http://www.baktimu.id/restoran/api/',
+    gambarUrl: 'http://www.baktimu.id/restoran/gambar/',
     baseUrl3: 'http://localhost/restoran/api/',
     gambarUrl3: 'http://localhost/restoran/gambar/',
-    baseUrl: 'http://10.0.3.2/restoran/api/',
-    gambarUrl: 'http://10.0.3.2/restoran/gambar/',
+    baseUrl2: 'http://10.0.3.2/restoran/api/',
+    gambarUrl2: 'http://10.0.3.2/restoran/gambar/',
     NAMA: 'nama',
     ID: 'id',
     PASSWORD: 'password',

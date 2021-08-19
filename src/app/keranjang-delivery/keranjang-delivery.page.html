@@ -40,42 +40,68 @@
     </ion-item>
   </ion-list>
 
-  <ion-grid *ngIf="total > 0">
-    <ion-row>
-      <ion-col size="6" size-md>
-        <ion-label>Total :</ion-label>
-      </ion-col>
-      <ion-col class="ion-align-self-end" size="6" size-md>
-        <ion-label>Rp. {{ total | number : fractionSize }}</ion-label>
-      </ion-col>
 
-      <ion-col size="6" size-md>
-        <ion-label>Ongkos kirim:</ion-label>
-      </ion-col>
-      <ion-col size="6" size-md>
-        <ion-label>Rp. {{ biaya | number : fractionSize }}</ion-label>
-      </ion-col>
+  <form [formGroup]="keranjangForm" (ngSubmit)="simpan()">
+    <div *ngIf="total > 0 && isLogin">
+      <ion-item>
+        <ion-label position="stacked">Alamat pengiriman lengkap</ion-label>
+        <ion-textarea formControlName="alamat" clearOnEdit="true"></ion-textarea>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.alamat">
+        <ng-container *ngIf="alamat.hasError(error.type) && (alamat.dirty || alamat.touched)">
+          <center><small>{{ error.message }}</small></center>
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="total > 0 && isLogin">
+      <ion-item>
+        <ion-label>Wilayah</ion-label>
+        <ion-select (ionChange)="gantiWilayah()"  formControlName="id_wilayah">
+          <ion-select-option *ngFor="let item of listWilayah;" value="{{item.id}}">{{item.nama}} </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.id_wilayah">
+        <ng-container *ngIf="id_wilayah.hasError(error.type) && (id_wilayah.dirty || id_wilayah.touched)">
+          <center><small>{{ error.message }}</small></center>
+        </ng-container>
+      </div>
+    </div>
+    <ion-grid *ngIf="total > 0">
+      <ion-row>
+        <ion-col size="6" size-md>
+          <ion-label>Total :</ion-label>
+        </ion-col>
+        <ion-col class="ion-align-self-end" size="6" size-md>
+          <ion-label>Rp. {{ total | number : fractionSize }}</ion-label>
+        </ion-col>
 
-      <ion-col size="6" size-md>
-        <ion-label>Grand total:</ion-label>
-      </ion-col>
-      <ion-col size="6" size-md>
-        <ion-label>Rp. {{ grandTotal | number : fractionSize }}</ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-col size="6" size-md>
+          <ion-label>Ongkos kirim:</ion-label>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <ion-label>Rp. {{ ongkir | number : fractionSize }}</ion-label>
+        </ion-col>
 
+        <ion-col size="6" size-md>
+          <ion-label>Grand total:</ion-label>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <ion-label>Rp. {{ grandTotal | number : fractionSize }}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="total > 0">
+      <ion-row>
+        <ion-col size="6" size-md>
+          <ion-button (click)="kosongKeranjang()" expand="full">Batal</ion-button>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <ion-button type="submit" [disabled]="!keranjangForm.valid" routerLink="/konf-deliveri" expand="full">Beli</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
-  <ion-grid *ngIf="total > 0">
-    <ion-row>
-      <ion-col size="6" size-md>
-        <ion-button (click)="kosongKeranjang()" expand="full">Batal</ion-button>
-      </ion-col>
-      <ion-col size="6" size-md>
-        <ion-button routerLink="/konf-deliveri" expand="full">Beli</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
 
 </ion-content>

@@ -40,7 +40,14 @@ export class KonfReservasiPage implements OnInit {
   }
 
   async ionViewWillEnter() {
-    this.nomor = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + '-2-'  + await this.storage.get(environment.ID);
+    this.nomor = new
+        Date().getFullYear().toString() +
+        new Date().getMonth().toString() +
+        new Date().getDate().toString() +
+        new Date().getHours().toString() +
+        new Date().getMinutes().toString() +
+        new Date().getSeconds().toString() +
+        + '2'  + await this.storage.get(environment.ID);
     this.total = await this.storage.get(environment.GRAND_TOTAL_RESERVASI);
   }
 
@@ -51,18 +58,12 @@ export class KonfReservasiPage implements OnInit {
     this.bayar.jenis_pesanan    = 2;
     this.bayar.id_user          = await this.storage.get(environment.ID);
     this.bayar.nomor            = this.nomor;
-    this.bayar.total            = await this.storage.get(environment.GRAND_TOTAL);
+    this.bayar.total            = await this.storage.get(environment.GRAND_TOTAL_RESERVASI);
     this.bayar.tgl_reservasi    = await this.storage.get(environment.TGL_RESERVASI);
     this.bayar.meja             = await this.storage.get(environment.NOMOR_MEJA);
     this.bayar.status_pesanan   = 1;
 
-    console.log('Jenis pesanan : ' +this.bayar.jenis_pesanan);
-    console.log('ID User : ' +this.bayar.id_user);
-    console.log('Nomor : ' +this.bayar.nomor);
-    console.log('Total : ' +this.bayar.total);
-    console.log('Tgl Reservasi : ' +this.bayar.tgl_reservasi);
-    console.log('No. meja : ' +this.bayar.meja);
-    console.log('status_pesanan : ' +this.bayar.status_pesanan);
+    console.log(this.bayar);
 
     this.http.post(environment.baseUrl + 'pesanan/add_reservasi.php', this.bayar).subscribe((res: any) => {
       console.log(res);

@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
 
   user: any = {};
   wilayah: any ={};
-  listWilayah: any =  [];
+
   constructor( private http: HttpClient,
                private ls: LoadingService,
                private toast: ToastController,
@@ -27,8 +27,7 @@ export class RegisterPage implements OnInit {
     nama:['', [Validators.required]],
     email:['', [Validators.required]],
     password:['',[Validators.required]],
-    cpassword:['', [Validators.required]],
-    id_wilayah:['', [Validators.required]]
+    cpassword:['', [Validators.required]]
   });
 
   get nama(){
@@ -43,9 +42,7 @@ export class RegisterPage implements OnInit {
   get cpassword(){
     return this.regForm.get('cpassword');
   }
-  get id_wilayah(){
-    return this.regForm.get('id_wilayah');
-  }
+
 
   public errorMessages = {
     nama:[
@@ -59,9 +56,6 @@ export class RegisterPage implements OnInit {
     ],
     cpassword:[
       { type: 'required', message: 'Konfirmasi password harus diisi'}
-    ],
-    id_wilayah:[
-      { type: 'required', message: 'Wilayah harus diisi'}
     ]
   }
 
@@ -77,14 +71,14 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  getWilayah(){
-    this.http.get(environment.baseUrl + 'wilayah/list_wilayah.php').subscribe((res: any) => {
-      this.ls.present();
-      console.log(res);
-      this.listWilayah = res.list;
-      this.ls.dismiss();
-    });
-  }
+  // getWilayah(){
+  //   this.http.get(environment.baseUrl + 'wilayah/list_wilayah.php').subscribe((res: any) => {
+  //     this.ls.present();
+  //     console.log(res);
+  //     this.listWilayah = res.list;
+  //     this.ls.dismiss();
+  //   });
+  // }
 
 
   async showToast(str){
@@ -101,9 +95,7 @@ export class RegisterPage implements OnInit {
     }).then(x => x.present());
   }
 
-
   ngOnInit() {
-    this.getWilayah();
   }
 
 }
